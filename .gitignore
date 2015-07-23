@@ -21,6 +21,8 @@ sdist/
 var/
 *.egg-info/
 .installed.cfg
+.idea/
+clevenus/.idea/
 *.egg
 
 # PyInstaller
