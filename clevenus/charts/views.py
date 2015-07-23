@@ -11,13 +11,13 @@ from datetime import datetime
 
 @atomic
 def chartNow(request):
+    return render(request, 'charts/detail.html')
     admin = UserProfile.objects.get(user__username='admin')
     chart = Chart.objects.get(user=admin, name='Now')
     d = datetime.now()
     chart.date = d.date()
     chart.time = d.time()
     chart.save()
-    print 'ok'
     return chartView(request, chart.pk)
 
 

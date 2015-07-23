@@ -2,7 +2,7 @@ from datetime import datetime, time
 import geocoder
 import pytz
 from tzwhere.tzwhere import tzwhere
-tzwhere = tzwhere()
+#tzwhere = tzwhere()
 from timezone_field import TimeZoneField
 import swisseph as swe
 swe.set_ephe_path('/usr/share/libswe/ephe/')
