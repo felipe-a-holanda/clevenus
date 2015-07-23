@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {{ chart.name }}
+<table class="table">
+    <thead>
+      <tr>
+        <th>In Sign</th>
+        <th>In House</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for planet in planets %}
+        <tr>
+
+        <td>{{ planet.planet.name }} in {{ planet.sign }}
+            <form action="{{ action }}" method="POST" role="form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <ul>
+                        {{ planet.form_sign.as_ul }}
+                    </ul>
+                    <button type="submit" class="btn btn-default">Salvar</button>
+                </div>
+            </form>
+        </td>
+        <td>{{ planet.planet.name }} in {{ planet.house }}
+            <form action="{{ action }}" method="POST" role="form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <ul>
+                        {{ planet.form_house.as_ul }}
+                    </ul>
+                    <button type="submit" class="btn btn-default">Salvar</button>
+                </div>
+            </form>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

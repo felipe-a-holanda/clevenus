@@ -1,0 +1,10 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<ul>
+
+    {% for a in aspects %}
+        <li>{{ a.iname }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

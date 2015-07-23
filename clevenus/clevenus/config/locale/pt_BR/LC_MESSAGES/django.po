@@ -1,0 +1,212 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-05-10 02:25+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: config/settings/common.py:116
+msgid "Brazilian Portuguese"
+msgstr ""
+
+#: config/settings/common.py:117
+msgid "English"
+msgstr ""
+
+#: horoscope/apps.py:6
+msgid "Horoscope"
+msgstr "Horóscopo"
+
+#: horoscope/models.py:17
+msgid "event"
+msgstr "evento"
+
+#: horoscope/models.py:18
+msgid "events"
+msgstr "eventos"
+
+#: horoscope/models.py:26 horoscope/views.py:74
+msgid "Sun"
+msgstr "Sol"
+
+#: horoscope/models.py:27 horoscope/views.py:75
+msgid "Moon"
+msgstr "Lua"
+
+#: horoscope/models.py:28 horoscope/views.py:76
+msgid "Mercury"
+msgstr "Mercúrio"
+
+#: horoscope/models.py:29 horoscope/views.py:77
+msgid "Venus"
+msgstr "Vênus"
+
+#: horoscope/models.py:30 horoscope/views.py:78
+msgid "Mars"
+msgstr "Marte"
+
+#: horoscope/models.py:31 horoscope/views.py:79
+msgid "Jupiter"
+msgstr "Júpiter"
+
+#: horoscope/models.py:32 horoscope/views.py:80
+msgid "Saturn"
+msgstr "Saturno"
+
+#: horoscope/models.py:33 horoscope/views.py:81
+msgid "Uranus"
+msgstr "Urano"
+
+#: horoscope/models.py:34 horoscope/views.py:82
+msgid "Neptune"
+msgstr "Netuno"
+
+#: horoscope/models.py:35 horoscope/views.py:83
+msgid "Pluto"
+msgstr "Plutão"
+
+#: horoscope/models.py:52
+msgctxt "singular"
+msgid "ephemeris"
+msgstr "efeméride"
+
+#: horoscope/models.py:53
+msgctxt "plural"
+msgid "ephemeris"
+msgstr "efemérides"
+
+#: horoscope/models.py:80
+msgid "location"
+msgstr "local"
+
+#: horoscope/models.py:81
+msgid "locations"
+msgstr "locais"
+
+#: horoscope/templates/horoscope/chart.html:29 horoscope/views.py:120
+msgid "Planet"
+msgstr "Planeta"
+
+#: horoscope/templates/horoscope/chart.html:30
+msgid "Sign"
+msgstr "Signo"
+
+#: horoscope/templates/horoscope/chart.html:31
+msgid "Angle"
+msgstr "Ângulo"
+
+#: horoscope/templates/horoscope/chart.html:45
+msgid "in"
+msgstr "em"
+
+#: horoscope/views.py:61
+msgid "Aries"
+msgstr "Áries"
+
+#: horoscope/views.py:62
+msgid "Taurus"
+msgstr "Touro"
+
+#: horoscope/views.py:63
+msgid "Gemini"
+msgstr "Gêmeos"
+
+#: horoscope/views.py:64
+msgid "Cancer"
+msgstr "Câncer"
+
+#: horoscope/views.py:65
+msgid "Leo"
+msgstr "Leão"
+
+#: horoscope/views.py:66
+msgid "Virgo"
+msgstr "Virgem"
+
+#: horoscope/views.py:67
+msgid "Libra"
+msgstr "Libra"
+
+#: horoscope/views.py:68
+msgid "Scorpio"
+msgstr "Escorpião"
+
+#: horoscope/views.py:69
+msgid "Sagittarius"
+msgstr "Sagitário"
+
+#: horoscope/views.py:70
+msgid "Capricorn"
+msgstr "Capricórnio"
+
+#: horoscope/views.py:71
+msgid "Aquarius"
+msgstr "Aquário"
+
+#: horoscope/views.py:72
+msgid "Pisces"
+msgstr "Peixes"
+
+#: horoscope/views.py:84
+msgid "Mean_Node"
+msgstr ""
+
+#: horoscope/views.py:85
+msgid "True_Node"
+msgstr ""
+
+#: horoscope/views.py:86
+msgid "Mean_Apog"
+msgstr ""
+
+#: horoscope/views.py:87
+msgid "Oscu_Apog"
+msgstr ""
+
+#: horoscope/views.py:88
+msgid "Earth"
+msgstr ""
+
+#: horoscope/views.py:89
+msgid "Chiron"
+msgstr ""
+
+#: horoscope/views.py:90
+msgid "Pholus"
+msgstr ""
+
+#: horoscope/views.py:91
+msgid "Ceres"
+msgstr ""
+
+#: horoscope/views.py:92
+msgid "Pallas"
+msgstr ""
+
+#: horoscope/views.py:93
+msgid "Juno"
+msgstr ""
+
+#: horoscope/views.py:94
+msgid "Vesta"
+msgstr ""
+
+#: horoscope/views.py:95
+msgid "Intp_Apog"
+msgstr ""
+
+#: horoscope/views.py:96
+msgid "Intp_Perg"
+msgstr ""

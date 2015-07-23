@@ -1,0 +1,34 @@
+
+				<div class="navbar navbar-inverse" role="navigation">
+					<div class="navbar-header">
+				        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+				        <span class="sr-only">Toggle navigation</span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        </button>
+				        <a class="navbar-brand" rel="home" href="/" title="Interpretações Astrológicas">Clevenus</a>
+				    </div>
+				    <div class="collapse navbar-collapse navbar-ex1-collapse">
+				    	<div class="col-sm-8 col-md-8">
+					    	<form class="navbar-form" role="search" method="get" id="search-form" name="search-form">
+						        <div class="input-group">
+						            <input type="text" class="form-control" placeholder="Pesquisar" id="query" name="search" value="">
+							            <div class="input-group-btn">
+						            <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search"></span></button>
+						            </div>
+						        </div>
+					        </form>
+				        </div>
+
+						<ul class="nav navbar-nav navbar-right">
+                            {% if user.username %}
+                                <li><a data-toggle="modal" href="#" data-target="#">{{ user.username }}</a></li>
+                            {% else %}
+                                <li><a data-toggle="modal" href="{% url 'login' %}" data-target="/accounts/login/">Login</a></li>
+                            {% endif %}
+
+							<li><a data-toggle="modal" href="{% url 'logout' %}" data-target="/accounts/logout/">Logout</a></li>
+						</ul>
+				    </div>
+				</div>

@@ -1,0 +1,603 @@
+<svg id="svgchart" width="600px" height="600px" display="block" align="center" preserveAspectRatio="xMinYMin meet" viewBox="0 0 600 600" baseprofile="full"  version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+ </defs>
+ <svg id="zodiac" transform="rotate({{ asc|stringformat:'f' }},300,300)">
+  <defs>
+  </defs>
+  <svg>
+   <defs>
+   </defs>
+   <path d="M 100.0 300.0 L 60.0, 300.0 A 240 240 0 0 0 92.1539030917 420.0 L 126.794919243 400.0 A 200 200 0 0 1 100.0 300.0 " fill="#FFBFBF" fill-opacity="1" stroke="white" stroke-width="0">
+   </path>
+   <g class="svg_obj svg_sign" id="Aries">
+    <path d="M 60.0 300.0 L 10.0, 300.0 A 290 290 0 0 0 48.8526329025 445.0 L 92.1539030917 420.0 A 240 240 0 0 1 60.0 300.0 " fill="#FF7E7E" fill-opacity="1" stroke="black" stroke-width="2">
+    </path>
+    <g transform="rotate(-15,300,300) translate(15.0,280.0) rotate(-90,20.0,20.0) scale(0.4)">
+     <g>
+      <defs>
+       <style type="text/css">
+        .fil0 {fill:#000000}
+       </style>
+      </defs>
+      <g transform="matrix(0.03644315,0,0,0.0365894,-55.539362,-101.90089)">
+       <path d="m2796,5449,0-134c0-257-26-543-77-857-52-315-115-572-189-771-162-432-336-648-523-648-83,0-151,36-204,109-52,73-78,167-78,284,0,154,49,313,149,477h-203c-98-177-147-343-147-497,0-160,46-292,138-398s208-160,347-160c225,0,415,151,573,454,157,301,256,706,297,1215h34c34-498,132-901,292-1208s354-461,579-461c139,0,254,53,346,158,92,104,138,236,138,396,0,155-49,322-146,501h-204c99-177,149-339,149-488,0-119-26-215-77-289-52-73-120-110-205-110-181,0-350,202-506,604-80,205-146,471-201,798-54,326-81,626-81,899v126h-201z" fill="#000">
+       </path>
+      </g>
+     </g>
+    </g>
+    <path d="M 60.0 300.0 L 10.0, 300.0 A 290 290 0 0 0 48.8526329025 445.0 L 92.1539030917 420.0 A 240 240 0 0 1 60.0 300.0 " fill="#FF7E7E" fill-opacity="0.01" id="Aries_drawing" stroke="black" stroke-width="1">
+    </path>
+    <path d="M 100.0 300.0 L 10.0, 300.0 A 290 290 0 0 0 48.8526329025 445.0 L 126.794919243 400.0 A 200 200 0 0 1 100.0 300.0 " fill="none" fill-opacity="0.5" id="Aries-highlight" stroke="black" stroke-width="3" visibility="hidden">
+    </path>
+   </g>
+  </svg>
+  <svg>
+   <defs>
+   </defs>
+   <path d="M 126.794919243 400.0 L 92.1539030917, 420.0 A 240 240 0 0 0 180.0 507.846096908 L 200.0 473.205080757 A 200 200 0 0 1 126.794919243 400.0 " fill="#BFDFBF" fill-opacity="1" stroke="white" stroke-width="0">
+   </path>
+   <g class="svg_obj svg_sign" id="Taurus">
+    <path d="M 92.1539030917 420.0 L 48.8526329025, 445.0 A 290 290 0 0 0 155.0 551.147367097 L 180.0 507.846096908 A 240 240 0 0 1 92.1539030917 420.0 " fill="#7EBF7E" fill-opacity="1" stroke="black" stroke-width="2">
+    </path>
+    <g transform="rotate(-45,300,300) translate(15.0,280.0) rotate(-90,20.0,20.0) scale(0.4)">
+     <g>
+      <defs>
+       <style type="text/css">
+        .fil0 {fill:#000000}
+       </style>
+      </defs>
+      <g transform="matrix(0.04066694,0,0,0.03883495,-61.976419,-112.8932)">
+       <path d="m2373,3861c-89-35-160-80-216-134-55-54-116-141-183-262l-80-144c-98-176-210-264-334-264h-36v-150h99c176,0,336,124,479,371l109,192c74,126,150,214,230,264,80,51,184,76,313,76s233-25,313-76c80-50,156-138,229-264l111-192c142-247,302-371,477-371h99v150h-35c-125,0-237,88-335,264l-80,144c-67,121-128,208-183,262-56,54-128,99-216,134,154,85,272,195,356,328s125,280,125,438c0,230-85,430-256,600-172,170-373,255-605,255s-433-85-605-255-258-370-258-600c0-158,42-305,126-438s202-243,356-328zm381,1420c182,0,337-63,467-191,129-126,194-279,194-458,0-182-65-337-193-464-128-128-284-191-468-191-183,0-339,63-469,191-128,127-193,282-193,464,0,179,65,332,194,458,129,128,285,191,468,191z" fill="#000">
+       </path>
+      </g>
+     </g>
+    </g>
+    <path d="M 92.1539030917 420.0 L 48.8526329025, 445.0 A 290 290 0 0 0 155.0 551.147367097 L 180.0 507.846096908 A 240 240 0 0 1 92.1539030917 420.0 " fill="#7EBF7E" fill-opacity="0.01" id="Taurus_drawing" stroke="black" stroke-width="1">
+    </path>
+    <path d="M 126.794919243 400.0 L 48.8526329025, 445.0 A 290 290 0 0 0 155.0 551.147367097 L 200.0 473.205080757 A 200 200 0 0 1 126.794919243 400.0 " fill="none" fill-opacity="0.5" id="Taurus-highlight" stroke="black" stroke-width="3" visibility="hidden">
+    </path>
+   </g>
+  </svg>
+  <svg>
+   <defs>
+   </defs>
+   <path d="M 200.0 473.205080757 L 180.0, 507.846096908 A 240 240 0 0 0 300.0 540.0 L 300.0 500.0 A 200 200 0 0 1 200.0 473.205080757 " fill="#FFFFBF" fill-opacity="1" stroke="black" stroke-width="0">
+   </path>
+   <g class="svg_obj svg_sign" id="Gemini">
+    <path d="M 180.0 507.846096908 L 155.0, 551.147367097 A 290 290 0 0 0 300.0 590.0 L 300.0 540.0 A 240 240 0 0 1 180.0 507.846096908 " fill="#FFFF7E" fill-opacity="1" stroke="black" stroke-width="2">
+    </path>
+    <g transform="rotate(-75,300,300) translate(15.0,280.0) rotate(-90,20.0,20.0) scale(0.4)">
+     <g>
+      <defs>
+       <style type="text/css">
+        .fil0 {fill:#000000}
+       </style>
+      </defs>
+      <g transform="matrix(0.04406539,0,0,0.04411116,-65.825878,-122.67314)">
+       <path d="m1524,5048,0-167c186-49,359-84,518-103v-1730c-172-16-345-49-518-99v-168c300,83,668,125,1104,125,437,0,805-42,1105-125v168c-174,50-347,83-519,99v1730c159,19,332,54,519,103v167c-342-90-710-134-1105-134s-763,44-1104,134zm719-282c115-13,243-19,385-19s270,6,385,19v-1693.2c-104,7-232,14.396-385,14.396-154,0-282-14.189-385-21.189v2034z" fill="#000">
+       </path>
+      </g>
+     </g>
+    </g>
+    <path d="M 180.0 507.846096908 L 155.0, 551.147367097 A 290 290 0 0 0 300.0 590.0 L 300.0 540.0 A 240 240 0 0 1 180.0 507.846096908 " fill="#FFFF7E" fill-opacity="0.01" id="Gemini_drawing" stroke="black" stroke-width="1">
+    </path>
+    <path d="M 200.0 473.205080757 L 155.0, 551.147367097 A 290 290 0 0 0 300.0 590.0 L 300.0 500.0 A 200 200 0 0 1 200.0 473.205080757 " fill="none" fill-opacity="0.5" id="Gemini-highlight" stroke="black" stroke-width="3" visibility="hidden">
+    </path>
+   </g>
+  </svg>
+  <svg>
+   <defs>
+   </defs>
+   <path d="M 300.0 500.0 L 300.0, 540.0 A 240 240 0 0 0 420.0 507.846096908 L 400.0 473.205080757 A 200 200 0 0 1 300.0 500.0 " fill="#BFBFFF" fill-opacity="1" stroke="black" stroke-width="0">
+   </path>
+   <g class="svg_obj svg_sign" id="Cancer">
+    <path d="M 300.0 540.0 L 300.0, 590.0 A 290 290 0 0 0 445.0 551.147367097 L 420.0 507.846096908 A 240 240 0 0 1 300.0 540.0 " fill="#7E7EFF" fill-opacity="1" stroke="black" stroke-width="2">
+    </path>
+    <g transform="rotate(-105,300,300) translate(15.0,280.0) rotate(-90,20.0,20.0) scale(0.4)">
+     <g>
+      <defs>
+       <style type="text/css">
+        .fil0 {fill:#000000}
+       </style>
+      </defs>
+      <g transform="matrix(0.03904725,0,0,0.03901063,-106.20852,-163.97331)">
+       <path d="m2720,6219,0-218c420,192,827,287,1219,287,257,0,466-33,627-100-102-52-179-118-230-197s-77-172-77-279c0-140,51-260,152-361,100-100,222-150,362-150s259,50,359,149c99,100,149,219,149,360,0,223-136,409-409,557s-615,222-1026,222c-356,0-731-89-1126-270zm1674-506c0,102,37,190,112,264,74,74,164,111,267,111,104,0,192-37,265-108,72-72,108-160,108-264,0-106-36-196-109-270s-161-111-265-111c-105,0-194,37-268,111-73,73-110,162-110,267zm887-961,0,218c-421-192-827-288-1220-288-256,0-466,33-628,101,104,52,181,118,231,197,52,79,77,172,77,279,0,140-50,260-151,361-101,100-222,150-363,150-140,0-259-49-358-149-99-99-149-219-149-359,0-224,136-411,409-559,272-148,615-222,1026-222,356,0,731,90,1126,271zm-1674,506c0-103-37-191-112-265-75-73-165-110-269-110s-192,36-264,108-108,160-108,264c0,106,37,196,110,270,72,74,161,111,265,111s194-37,267-111c74-74,111-163,111-267z" fill="#000">
+       </path>
+      </g>
+     </g>
+    </g>
+    <path d="M 300.0 540.0 L 300.0, 590.0 A 290 290 0 0 0 445.0 551.147367097 L 420.0 507.846096908 A 240 240 0 0 1 300.0 540.0 " fill="#7E7EFF" fill-opacity="0.01" id="Cancer_drawing" stroke="black" stroke-width="1">
+    </path>
+    <path d="M 300.0 500.0 L 300.0, 590.0 A 290 290 0 0 0 445.0 551.147367097 L 400.0 473.205080757 A 200 200 0 0 1 300.0 500.0 " fill="none" fill-opacity="0.5" id="Cancer-highlight" stroke="black" stroke-width="3" visibility="hidden">
+    </path>
+   </g>
+  </svg>
+  <svg>
+   <defs>
+   </defs>
+   <path d="M 400.0 473.205080757 L 420.0, 507.846096908 A 240 240 0 0 0 507.846096908 420.0 L 473.205080757 400.0 A 200 200 0 0 1 400.0 473.205080757 " fill="#FFBFBF" fill-opacity="1" stroke="black" stroke-width="0">
+   </path>
+   <g class="svg_obj svg_sign" id="Leo">
+    <path d="M 420.0 507.846096908 L 445.0, 551.147367097 A 290 290 0 0 0 551.147367097 445.0 L 507.846096908 420.0 A 240 240 0 0 1 420.0 507.846096908 " fill="#FF7E7E" fill-opacity="1" stroke="black" stroke-width="2">
+    </path>
+    <g transform="rotate(-135,300,300) translate(15.0,280.0) rotate(-90,20.0,20.0) scale(0.4)">
+     <g>
+      <defs>
+       <style type="text/css">
+        .fil0 {fill:#000000}
+       </style>
+      </defs>
+      <g transform="matrix(0.03643591,0,0,0.03644315,-88.201407,-157.21575)">
+       <path d="m4866,6842c-157,144-307,216-451,216-124,0-229-41-314-124-84-83-126-185-126-306,0-162,85-423,255-784l130-277c100-214,150-388,150-521,0-170-49-306-148-409-99-104-230-155-393-155-153,0-276,46-371,137-94,93-141,213-141,362,0,138,44,299,132,483l53,110c88,182,132,315,132,402,0,137-53,258-157,360s-228,153-370,153c-146,0-271-51-373-154-103-103-154-228-154-376,0-142,50-265,152-368,101-103,222-155,362-155,51,0,107,9,168,28-97-187-146-352-146-496,0-187,67-343,202-467,136-125,306-187,510-187,224,0,404,66,540,197,135,132,203,307,203,525,0,108-11,202-34,280-22,79-76,209-160,390l-93,203c-166,360-250,592-250,698,0,78,23,142,70,192,46,51,106,76,178,76,95,0,204-54,326-162l118,129zm-1996-881c0,106,36,196,107,269,71,72,158,109,262,109,102,0,188-37,260-110s108-162,108-266c0-106-36-195-107-268-72-72-159-109-263-109-102,0-188,37-260,110-71,73-107,161-107,265z" fill="#000">
+       </path>
+      </g>
+     </g>
+    </g>
+    <path d="M 420.0 507.846096908 L 445.0, 551.147367097 A 290 290 0 0 0 551.147367097 445.0 L 507.846096908 420.0 A 240 240 0 0 1 420.0 507.846096908 " fill="#FF7E7E" fill-opacity="0.01" id="Leo_drawing" stroke="black" stroke-width="1">
+    </path>
+    <path d="M 400.0 473.205080757 L 445.0, 551.147367097 A 290 290 0 0 0 551.147367097 445.0 L 473.205080757 400.0 A 200 200 0 0 1 400.0 473.205080757 " fill="none" fill-opacity="0.5" id="Leo-highlight" stroke="black" stroke-width="3" visibility="hidden">
+    </path>
+   </g>
+  </svg>
+  <svg>
+   <defs>
+   </defs>
+   <path d="M 473.205080757 400.0 L 507.846096908, 420.0 A 240 240 0 0 0 540.0 300.0 L 500.0 300.0 A 200 200 0 0 1 473.205080757 400.0 " fill="#BFDFBF" fill-opacity="1" stroke="black" stroke-width="0">
+   </path>
+   <g class="svg_obj svg_sign" id="Virgo">
+    <path d="M 507.846096908 420.0 L 551.147367097, 445.0 A 290 290 0 0 0 590.0 300.0 L 540.0 300.0 A 240 240 0 0 1 507.846096908 420.0 " fill="#7EBF7E" fill-opacity="1" stroke="black" stroke-width="2">
+    </path>
+    <g transform="rotate(-165,300,300) translate(15.0,280.0) rotate(-90,20.0,20.0) scale(0.4)">
+     <g>
+      <defs>
+       <style type="text/css">
+        .fil0 {fill:#000000}
+       </style>
+      </defs>
+      <g transform="matrix(0.03881675,0,0,0.03875969,-96.804949,-172.28682)">
+       <path d="m3086,5231,0,1258-201,0,0-1457c0-202-55-386-165-550h212c75,103,126,236,154,397,68-167,147-299,236-397l197-37c90,116,147,270,171,462,46-145,128-287,245-425l194-37c109,151,163,318,163,501v382c54-153,112-274,172-360l166-61c143,221,214,454,214,698,0,194-43,375-128,545s-214,328-384,475c16,118,85,251,207,400h-236c-57-72-108-168-152-287-125,71-279,121-461,150v-172c172-35,312-86,422-151-14-87-21-174-21-262v-1220c0-199-28-349-86-451-142,153-247,369-315,646v1211h-202v-1338c0-249-30-422-88-519-139,162-243,361-314,599zm1206,1206c118-120,205-248,264-385,58-137,87-283,87-436,0-161-35-317-105-468-100,123-181,287-246,492v797z" fill="#000">
+       </path>
+      </g>
+     </g>
+    </g>
+    <path d="M 507.846096908 420.0 L 551.147367097, 445.0 A 290 290 0 0 0 590.0 300.0 L 540.0 300.0 A 240 240 0 0 1 507.846096908 420.0 " fill="#7EBF7E" fill-opacity="0.01" id="Virgo_drawing" stroke="black" stroke-width="1">
+    </path>
+    <path d="M 473.205080757 400.0 L 551.147367097, 445.0 A 290 290 0 0 0 590.0 300.0 L 500.0 300.0 A 200 200 0 0 1 473.205080757 400.0 " fill="none" fill-opacity="0.5" id="Virgo-highlight" stroke="black" stroke-width="3" visibility="hidden">
+    </path>
+   </g>
+  </svg>
+  <svg>
+   <defs>
+   </defs>
+   <path d="M 500.0 300.0 L 540.0, 300.0 A 240 240 0 0 0 507.846096908 180.0 L 473.205080757 200.0 A 200 200 0 0 1 500.0 300.0 " fill="#FFFFBF" fill-opacity="1" stroke="black" stroke-width="0">
+   </path>
+   <g class="svg_obj svg_sign" id="Libra">
+    <path d="M 540.0 300.0 L 590.0, 300.0 A 290 290 0 0 0 551.147367097 155.0 L 507.846096908 180.0 A 240 240 0 0 1 540.0 300.0 " fill="#FFFF7E" fill-opacity="1" stroke="black" stroke-width="2">
+    </path>
+    <g transform="rotate(-195,300,300) translate(15.0,280.0) rotate(-90,20.0,20.0) scale(0.4)">
+     <g>
+      <defs>
+       <style type="text/css">
+        .fil0 {fill:#000000}
+       </style>
+      </defs>
+      <g transform="matrix(0.0463392,0,0,0.04626554,-126.04262,-199.13993)">
+       <path d="m2720,6288,0-200,2158,0,0,200-2158,0zm853-789,0,187-853,0,0-201,598,0c-109-111-163-236-163-374,0-172,64-319,191-443s278-186,454-186c175,0,326,62,453,186,128,124,191,271,191,443,0,138-54,263-163,374h597v201h-853v-187c145-94,218-220,218-378,0-120-44-222-131-308-88-87-192-130-312-130-122,0-226,43-313,130-87,86-131,188-131,308,0,158,72,284,217,378z" fill="#000">
+       </path>
+      </g>
+     </g>
+    </g>
+    <path d="M 540.0 300.0 L 590.0, 300.0 A 290 290 0 0 0 551.147367097 155.0 L 507.846096908 180.0 A 240 240 0 0 1 540.0 300.0 " fill="#FFFF7E" fill-opacity="0.01" id="Libra_drawing" stroke="black" stroke-width="1">
+    </path>
+    <path d="M 500.0 300.0 L 590.0, 300.0 A 290 290 0 0 0 551.147367097 155.0 L 473.205080757 200.0 A 200 200 0 0 1 500.0 300.0 " fill="none" fill-opacity="0.5" id="Libra-highlight" stroke="black" stroke-width="3" visibility="hidden">
+    </path>
+   </g>
+  </svg>
+  <svg>
+   <defs>
+   </defs>
+   <path d="M 473.205080757 200.0 L 507.846096908, 180.0 A 240 240 0 0 0 420.0 92.1539030917 L 400.0 126.794919243 A 200 200 0 0 1 473.205080757 200.0 " fill="#BFBFFF" fill-opacity="1" stroke="black" stroke-width="0">
+   </path>
+   <g class="svg_obj svg_sign" id="Scorpio">
+    <path d="M 507.846096908 180.0 L 551.147367097, 155.0 A 290 290 0 0 0 445.0 48.8526329025 L 420.0 92.1539030917 A 240 240 0 0 1 507.846096908 180.0 " fill="#7E7EFF" fill-opacity="1" stroke="black" stroke-width="2">
+    </path>
+    <g transform="rotate(-225,300,300) translate(15.0,280.0) rotate(-90,20.0,20.0) scale(0.4)">
+     <g>
+      <defs>
+       <style type="text/css">
+        .fil0 {fill:#000000}
+       </style>
+      </defs>
+      <g transform="matrix(0.03824955,0,0,0.03832886,-99.517491,-170.29512)">
+       <path d="m2889,6489,0-1432c0-238-56-431-169-575h216c76,116,127,247,154,395,64-158,143-289,236-395l194-39c91,106,148,258,173,455,49-141,130-280,242-416l198-39c108,146,162,319,162,519v1250c0,131,5,220,13,266,10,47,30,87,62,122,57,60,153,90,287,90h123v-201l318,287-318,276v-195h-184c-176,0-303-46-382-138-80-93-120-240-120-443v-1209c0-204-29-350-88-439-150,173-255,389-313,649v1212h-201v-1351c0-243-29-413-88-510-144,162-248,364-314,604v1257h-201z" fill="#000">
+       </path>
+      </g>
+     </g>
+    </g>
+    <path d="M 507.846096908 180.0 L 551.147367097, 155.0 A 290 290 0 0 0 445.0 48.8526329025 L 420.0 92.1539030917 A 240 240 0 0 1 507.846096908 180.0 " fill="#7E7EFF" fill-opacity="0.01" id="Scorpio_drawing" stroke="black" stroke-width="1">
+    </path>
+    <path d="M 473.205080757 200.0 L 551.147367097, 155.0 A 290 290 0 0 0 445.0 48.8526329025 L 400.0 126.794919243 A 200 200 0 0 1 473.205080757 200.0 " fill="none" fill-opacity="0.5" id="Scorpio-highlight" stroke="black" stroke-width="3" visibility="hidden">
+    </path>
+   </g>
+  </svg>
+  <svg>
+   <defs>
+   </defs>
+   <path d="M 400.0 126.794919243 L 420.0, 92.1539030917 A 240 240 0 0 0 300.0 60.0 L 300.0 100.0 A 200 200 0 0 1 400.0 126.794919243 " fill="#FFBFBF" fill-opacity="1" stroke="black" stroke-width="0">
+   </path>
+   <g class="svg_obj svg_sign" id="Sagittarius">
+    <path d="M 420.0 92.1539030917 L 445.0, 48.8526329025 A 290 290 0 0 0 300.0 10.0 L 300.0 60.0 A 240 240 0 0 1 420.0 92.1539030917 " fill="#FF7E7E" fill-opacity="1" stroke="black" stroke-width="2">
+    </path>
+    <g transform="rotate(-255,300,300) translate(15.0,280.0) rotate(-90,20.0,20.0) scale(0.4)">
+     <g>
+      <defs>
+       <style type="text/css">
+        .fil0 {fill:#000000}
+       </style>
+      </defs>
+      <g transform="matrix(0.04737092,0,0,0.04746084,-128.84891,-210.34644)">
+       <path d="m4692,4570,139,989-198,31-102-721-905,907,426,425-142,142-426-426-626,622-138-138,625-623-425-426,140-142,426,426,907-905-721-101,31-198,989,138z" fill="#000">
+       </path>
+      </g>
+     </g>
+    </g>
+    <path d="M 420.0 92.1539030917 L 445.0, 48.8526329025 A 290 290 0 0 0 300.0 10.0 L 300.0 60.0 A 240 240 0 0 1 420.0 92.1539030917 " fill="#FF7E7E" fill-opacity="0.01" id="Sagittarius_drawing" stroke="black" stroke-width="1">
+    </path>
+    <path d="M 400.0 126.794919243 L 445.0, 48.8526329025 A 290 290 0 0 0 300.0 10.0 L 300.0 100.0 A 200 200 0 0 1 400.0 126.794919243 " fill="none" fill-opacity="0.5" id="Sagittarius-highlight" stroke="black" stroke-width="3" visibility="hidden">
+    </path>
+   </g>
+  </svg>
+  <svg>
+   <defs>
+   </defs>
+   <path d="M 300.0 100.0 L 300.0, 60.0 A 240 240 0 0 0 180.0 92.1539030917 L 200.0 126.794919243 A 200 200 0 0 1 300.0 100.0 " fill="#BFDFBF" fill-opacity="1" stroke="black" stroke-width="0">
+   </path>
+   <g class="svg_obj svg_sign" id="Capricorn">
+    <path d="M 300.0 60.0 L 300.0, 10.0 A 290 290 0 0 0 155.0 48.8526329025 L 180.0 92.1539030917 A 240 240 0 0 1 300.0 60.0 " fill="#7EBF7E" fill-opacity="1" stroke="black" stroke-width="2">
+    </path>
+    <g transform="rotate(-285,300,300) translate(15.0,280.0) rotate(-90,20.0,20.0) scale(0.4)">
+     <g>
+      <g transform="matrix(0.03880481,0,0,0.03879326,-105.54908,-169.60864)">
+       <path d="m3212,5895,0-70c0-131-23-314-68-552-46-238-88-394-127-468-55-105-141-158-259-158h-38v-165h150c141,0,238,55,292,165,64,133,122,353,175,661,76-340,202-615,380-826l265-51c65,147,119,368,162,663l37,245c12,86,20,147,24,183,16,147,37,258,61,333,129-247,308-371,536-371,137,0,254,48,350,142,97,94,145,209,145,344,0,144-49,268-146,368-98,101-217,151-357,151-191,0-358-74-501-222-102,268-192,439-270,513s-206,111-384,111h-182v-167h85c172,0,290-35,355-105,64-69,147-251,247-546-45-79-75-146-89-199s-32-169-54-349l-51-384c-33-253-72-427-117-522-114,135-213,318-296,549-84,231-125,437-125,619v108h-200zm1126,202c145,161,293,242,441,242,100,0,184-35,251-105,67-69,100-157,100-261,0-93-32-173-96-239-63-65-141-98-232-98-197,0-352,154-464,461z">
+       </path>
+      </g>
+     </g>
+    </g>
+    <path d="M 300.0 60.0 L 300.0, 10.0 A 290 290 0 0 0 155.0 48.8526329025 L 180.0 92.1539030917 A 240 240 0 0 1 300.0 60.0 " fill="#7EBF7E" fill-opacity="0.01" id="Capricorn_drawing" stroke="black" stroke-width="1">
+    </path>
+    <path d="M 300.0 100.0 L 300.0, 10.0 A 290 290 0 0 0 155.0 48.8526329025 L 200.0 126.794919243 A 200 200 0 0 1 300.0 100.0 " fill="none" fill-opacity="0.5" id="Capricorn-highlight" stroke="black" stroke-width="3" visibility="hidden">
+    </path>
+   </g>
+  </svg>
+  <svg>
+   <defs>
+   </defs>
+   <path d="M 200.0 126.794919243 L 180.0, 92.1539030917 A 240 240 0 0 0 92.1539030917 180.0 L 126.794919243 200.0 A 200 200 0 0 1 200.0 126.794919243 " fill="#FFFFBF" fill-opacity="1" stroke="black" stroke-width="0">
+   </path>
+   <g class="svg_obj svg_sign" id="Aquarius">
+    <path d="M 180.0 92.1539030917 L 155.0, 48.8526329025 A 290 290 0 0 0 48.8526329025 155.0 L 92.1539030917 180.0 A 240 240 0 0 1 180.0 92.1539030917 " fill="#FFFF7E" fill-opacity="1" stroke="black" stroke-width="2">
+    </path>
+    <g transform="rotate(-315,300,300) translate(15.0,280.0) rotate(-90,20.0,20.0) scale(0.4)">
+     <g>
+      <defs>
+       <style type="text/css">
+        .fil0 {fill:#000000}
+       </style>
+      </defs>
+      <g transform="matrix(0.04016064,0,0,0.04010923,-109.23694,-170.03924)">
+       <path d="m2720,6184,753-497,165,385,583-385,163,385,584-385,241,567-156,69-161-385-586,385-163-385-581,385-164-385-586,385-92-139zm1-1037,753-498,165,385,584-385,163,385,583-385,241,567-156,69-161-385-587,385-163-385-581,385-162-385-586,385-93-138z" fill="#000">
+       </path>
+      </g>
+     </g>
+    </g>
+    <path d="M 180.0 92.1539030917 L 155.0, 48.8526329025 A 290 290 0 0 0 48.8526329025 155.0 L 92.1539030917 180.0 A 240 240 0 0 1 180.0 92.1539030917 " fill="#FFFF7E" fill-opacity="0.01" id="Aquarius_drawing" stroke="black" stroke-width="1">
+    </path>
+    <path d="M 200.0 126.794919243 L 155.0, 48.8526329025 A 290 290 0 0 0 48.8526329025 155.0 L 126.794919243 200.0 A 200 200 0 0 1 200.0 126.794919243 " fill="none" fill-opacity="0.5" id="Aquarius-highlight" stroke="black" stroke-width="3" visibility="hidden">
+    </path>
+   </g>
+  </svg>
+  <svg>
+   <defs>
+   </defs>
+   <path d="M 126.794919243 200.0 L 92.1539030917, 180.0 A 240 240 0 0 0 60.0 300.0 L 100.0 300.0 A 200 200 0 0 1 126.794919243 200.0 " fill="#BFBFFF" fill-opacity="1" stroke="black" stroke-width="0">
+   </path>
+   <g class="svg_obj svg_sign" id="Pisces">
+    <path d="M 92.1539030917 180.0 L 48.8526329025, 155.0 A 290 290 0 0 0 10.0 300.0 L 60.0 300.0 A 240 240 0 0 1 92.1539030917 180.0 " fill="#7E7EFF" fill-opacity="1" stroke="black" stroke-width="2">
+    </path>
+    <g transform="rotate(-345,300,300) translate(15.0,280.0) rotate(-90,20.0,20.0) scale(0.4)">
+     <g>
+      <defs>
+       <style type="text/css">
+        .fil0 {fill:#000000}
+       </style>
+      </defs>
+      <g transform="matrix(0.04745884,0,0,0.04746084,-119.3806,-210.34644)">
+       <path d="m3362,5518c0,165-39,340-115,524-77,184-179,350-308,497h-219c295-311,442-651,442-1021h-427v-150h427c-18-322-165-634-442-936h207c254,271,399,583,435,936h414c37-353,182-665,435-936h207c-277,302-424,614-442,936h427v150h-427c0,370,147,710,442,1021h-218c-130-147-232-313-309-497-76-184-115-359-115-524h-414z" fill="#000">
+       </path>
+      </g>
+     </g>
+    </g>
+    <path d="M 92.1539030917 180.0 L 48.8526329025, 155.0 A 290 290 0 0 0 10.0 300.0 L 60.0 300.0 A 240 240 0 0 1 92.1539030917 180.0 " fill="#7E7EFF" fill-opacity="0.01" id="Pisces_drawing" stroke="black" stroke-width="1">
+    </path>
+    <path d="M 126.794919243 200.0 L 48.8526329025, 155.0 A 290 290 0 0 0 10.0 300.0 L 100.0 300.0 A 200 200 0 0 1 126.794919243 200.0 " fill="none" fill-opacity="0.5" id="Pisces-highlight" stroke="black" stroke-width="3" visibility="hidden">
+    </path>
+   </g>
+  </svg>
+ </svg>
+ <svg id="planets">
+  <defs>
+  </defs>
+  <svg class="svg_obj svg_planet" id="pluto" visibility="{{ pluto_visibility }}">
+   <defs>
+   </defs>
+   <g>
+    <circle cx="{{ pluto_x|stringformat:'f' }}" cy="{{ pluto_y|stringformat:'f' }}" fill="white" fill-opacity="0.5" r="{{ pluto_circle }}"" stroke="none">
+    </circle>
+    <g transform="translate({{ pluto_x_corner|stringformat:'f' }},{{ pluto_y_corner|stringformat:'f' }}) scale({{ pluto_scale|stringformat:'f' }})">
+     <g>
+      <g transform="translate(-258.5991,-337.1767)">
+       <g fill="none" stroke="#000" stroke-dasharray="none" stroke-dashoffset="0" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" stroke-width="2.9000001" transform="matrix(2.5706921,0,0,2.5706921,-420.44687,-675.15696)">
+        <path d="m275.6,423.25,16,0" style="color:#000000;">
+        </path>
+        <path d="m283.6,431.25,0-17" style="color:#000000;">
+        </path>
+        <path d="m172,184c0,3.866-3.134,7-7,7s-7-3.134-7-7,3.134-7,7-7,7,3.134,7,7z" style="color:#000000;" transform="translate(118.5991,218.2481)">
+        </path>
+        <path d="m177,184c0,6.6274-5.3726,12-12,12s-12-5.3726-12-12" style="color:#000000;" transform="translate(118.5991,218.2481)">
+        </path>
+       </g>
+      </g>
+     </g>
+    </g>
+    <circle cx="{{ pluto_x|stringformat:'f' }}" cy="{{ pluto_y|stringformat:'f' }}" fill="none" id="pluto-highlight" r="10" stroke="black" stroke-width="2" visibility="hidden">
+    </circle>
+    <circle cx="{{ pluto_x|stringformat:'f' }}" cy="{{ pluto_y|stringformat:'f' }}" fill="white" fill-opacity="0.01" id="pluto_drawing" r="7.5" stroke="none">
+    </circle>
+   </g>
+  </svg>
+  <svg class="svg_obj svg_planet" id="neptune" visibility="{{ neptune_visibility }}">
+   <defs>
+   </defs>
+   <g>
+    <circle cx="{{ neptune_x|stringformat:'f' }}" cy="{{ neptune_y|stringformat:'f' }}" fill="white" fill-opacity="0.5" r="{{ neptune_circle }}"" stroke="none">
+    </circle>
+    <g transform="translate({{ neptune_x_corner|stringformat:'f' }},{{ neptune_y_corner|stringformat:'f' }}) scale({{ neptune_scale|stringformat:'f' }})">
+     <g>
+      <defs>
+      </defs>
+      <g transform="translate(-348.7552,-428.0905)">
+       <g fill="none" stroke="#000" stroke-dasharray="none" stroke-dashoffset="0" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" stroke-width="3" transform="matrix(2.5327792,0,0,2.5327792,-549.69332,-796.84035)">
+        <path d="m363.88,487.24c-2.6543,18.034,1.7696,20.74,10.617,20.74,8.8478,0,13.272-2.7052,10.617-20.74" style="color:#000000;">
+        </path>
+        <path d="m374.49,489.04,0,33.364" style="color:#000000;">
+        </path>
+        <path d="m367.42,515.19,14.157,0" style="color:#000000;">
+        </path>
+        <path d="m358.98,489.73,5.0205-3.8047,3.7332,5.1166" style="color:#000000;">
+        </path>
+        <path d="m369.99,494.03,4.3747-4.5583,4.4726,4.4584" style="color:#000000;">
+        </path>
+        <path d="m381.19,491.35,3.797-5.0676,4.9724,3.8697" style="color:#000000;">
+        </path>
+       </g>
+      </g>
+     </g>
+    </g>
+    <circle cx="{{ neptune_x|stringformat:'f' }}" cy="{{ neptune_y|stringformat:'f' }}" fill="none" id="neptune-highlight" r="10" stroke="black" stroke-width="2" visibility="hidden">
+    </circle>
+    <circle cx="{{ neptune_x|stringformat:'f' }}" cy="{{ neptune_y|stringformat:'f' }}" fill="white" fill-opacity="0.01" id="neptune_drawing" r="7.5" stroke="none">
+    </circle>
+   </g>
+  </svg>
+  <svg class="svg_obj svg_planet" id="uranus" visibility="{{ uranus_visibility }}">
+   <defs>
+   </defs>
+   <g>
+    <circle cx="{{ uranus_x|stringformat:'f' }}" cy="{{ uranus_y|stringformat:'f' }}" fill="white" fill-opacity="0.5" r="{{ uranus_circle }}"" stroke="none">
+    </circle>
+    <g transform="translate({{ uranus_x_corner|stringformat:'f' }},{{ uranus_y_corner|stringformat:'f' }}) scale({{ uranus_scale|stringformat:'f' }})">
+     <g>
+      <g transform="translate(-348.7552,-428.0905)">
+       <g transform="matrix(2.6315762,0,0,2.6315762,-586.51603,-846.19122)">
+        <path d="m363.4,509.73-7,0,0-1,4-1,0-20-4-1,0-1,7,0,0,24z" fill="#000" fill-rule="evenodd">
+        </path>
+        <path d="m385.4,509.73,7,0,0-1-4-1,0-20,4-1,0-1-7,0,0,24z" fill="#000" fill-rule="evenodd">
+        </path>
+        <path d="m362.4,497.73,24,0" fill="none" stroke="#000" stroke-dasharray="none" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" stroke-width="3">
+        </path>
+        <path d="m374.4,485.73,0,26" fill="none" stroke="#000" stroke-dasharray="none" stroke-dashoffset="0" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" stroke-width="3" style="color:#000000;">
+        </path>
+        <path d="m40,211c0,2.2091-1.7909,4-4,4s-4-1.7909-4-4,1.7909-4,4-4,4,1.7909,4,4z" fill="none" stroke="#000" stroke-dasharray="none" stroke-dashoffset="0" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" stroke-width="3" style="color:#000000;" transform="translate(338.4034,305.7276)">
+        </path>
+       </g>
+      </g>
+     </g>
+    </g>
+    <circle cx="{{ uranus_x|stringformat:'f' }}" cy="{{ uranus_y|stringformat:'f' }}" fill="none" id="uranus-highlight" r="10" stroke="black" stroke-width="2" visibility="hidden">
+    </circle>
+    <circle cx="{{ uranus_x|stringformat:'f' }}" cy="{{ uranus_y|stringformat:'f' }}" fill="white" fill-opacity="0.01" id="uranus_drawing" r="7.5" stroke="none">
+    </circle>
+   </g>
+  </svg>
+  <svg class="svg_obj svg_planet" id="saturn" visibility="{{ saturn_visibility }}">
+   <defs>
+   </defs>
+   <g>
+    <circle cx="{{ saturn_x|stringformat:'f' }}" cy="{{ saturn_y|stringformat:'f' }}" fill="white" fill-opacity="0.5" r="{{ saturn_circle }}"" stroke="none">
+    </circle>
+    <g transform="translate({{ saturn_x_corner|stringformat:'f' }},{{ saturn_y_corner|stringformat:'f' }}) scale({{ saturn_scale|stringformat:'f' }})">
+     <g>
+      <g transform="translate(-348.7552,-428.0905)">
+       <g fill="none" stroke="#000" stroke-dasharray="none" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" stroke-width="3" transform="matrix(2.5,0,0,2.5,-535.24454,-778.19267)">
+        <path d="m368.55,484.01,0,29">
+        </path>
+        <path d="m363.65,488.76,12,0" stroke-dashoffset="0" style="color:#000000;">
+        </path>
+        <path d="m382.55,519.01c-1,1-2,2-3,2s-3-1-3-3,1-4,3-6,4-6,4-10-2-8-6-8c-3.7832,0-7,2-9,6">
+        </path>
+       </g>
+      </g>
+     </g>
+    </g>
+    <circle cx="{{ saturn_x|stringformat:'f' }}" cy="{{ saturn_y|stringformat:'f' }}" fill="none" id="saturn-highlight" r="10" stroke="black" stroke-width="2" visibility="hidden">
+    </circle>
+    <circle cx="{{ saturn_x|stringformat:'f' }}" cy="{{ saturn_y|stringformat:'f' }}" fill="white" fill-opacity="0.01" id="saturn_drawing" r="7.5" stroke="none">
+    </circle>
+   </g>
+  </svg>
+  <svg class="svg_obj svg_planet" id="jupiter" visibility="{{ jupiter_visibility }}">
+   <defs>
+   </defs>
+   <g>
+    <circle cx="{{ jupiter_x|stringformat:'f' }}" cy="{{ jupiter_y|stringformat:'f' }}" fill="white" fill-opacity="0.5" r="{{ jupiter_circle }}"" stroke="none">
+    </circle>
+    <g transform="translate({{ jupiter_x_corner|stringformat:'f' }},{{ jupiter_y_corner|stringformat:'f' }}) scale({{ jupiter_scale|stringformat:'f' }})">
+     <g>
+      <g transform="translate(-348.7552,-428.0905)">
+       <g fill="none" stroke="#000" stroke-dasharray="none" stroke-dashoffset="0" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" stroke-width="3" transform="matrix(2.7735789,0,0,2.7735789,-641.66348,-918.14612)">
+        <path d="m382.84,486.88,0,33.054" style="color:#000000;">
+        </path>
+        <path d="m388.29,511.46-26.338,0" style="color:#000000;">
+        </path>
+        <path d="m364.67,498.74c-0.90819,0-2.7246-0.84755-2.7246-4.2378s3.6328-6.7804,7.2655-6.7804c3.6328,0,7.2655,2.5426,7.2655,8.4755s-4.5409,15.256-13.623,15.256" style="color:#000000;">
+        </path>
+       </g>
+      </g>
+     </g>
+    </g>
+    <circle cx="{{ jupiter_x|stringformat:'f' }}" cy="{{ jupiter_y|stringformat:'f' }}" fill="none" id="jupiter-highlight" r="10" stroke="black" stroke-width="2" visibility="hidden">
+    </circle>
+    <circle cx="{{ jupiter_x|stringformat:'f' }}" cy="{{ jupiter_y|stringformat:'f' }}" fill="white" fill-opacity="0.01" id="jupiter_drawing" r="7.5" stroke="none">
+    </circle>
+   </g>
+  </svg>
+  <svg class="svg_obj svg_planet" id="mars" visibility="{{ mars_visibility }}">
+   <defs>
+   </defs>
+   <g>
+    <circle cx="{{ mars_x|stringformat:'f' }}" cy="{{ mars_y|stringformat:'f' }}" fill="white" fill-opacity="0.5" r="{{ mars_circle }}"" stroke="none">
+    </circle>
+    <g transform="translate({{ mars_x_corner|stringformat:'f' }},{{ mars_y_corner|stringformat:'f' }}) scale({{ mars_scale|stringformat:'f' }})">
+     <g>
+      <path d="m61.076,33.221a34.789,34.789,0,1,0,5.7031,5.7031zm2.8516,2.8516,31.367-31.367m-25.664,0h25.664v25.663" fill="none" stroke="#000" stroke-width="9.41014194">
+      </path>
+     </g>
+    </g>
+    <circle cx="{{ mars_x|stringformat:'f' }}" cy="{{ mars_y|stringformat:'f' }}" fill="none" id="mars-highlight" r="10" stroke="black" stroke-width="2" visibility="hidden">
+    </circle>
+    <circle cx="{{ mars_x|stringformat:'f' }}" cy="{{ mars_y|stringformat:'f' }}" fill="white" fill-opacity="0.01" id="mars_drawing" r="7.5" stroke="none">
+    </circle>
+   </g>
+  </svg>
+  <svg class="svg_obj svg_planet" id="venus" visibility="{{ venus_visibility }}">
+   <defs>
+   </defs>
+   <g>
+    <circle cx="{{ venus_x|stringformat:'f' }}" cy="{{ venus_y|stringformat:'f' }}" fill="white" fill-opacity="0.5" r="{{ venus_circle }}"" stroke="none">
+    </circle>
+    <g transform="translate({{ venus_x_corner|stringformat:'f' }},{{ venus_y_corner|stringformat:'f' }}) scale({{ venus_scale|stringformat:'f' }})">
+     <g>
+      <path d="m64.561,80.61h-29.268m14.634,15.366v-35.366a28.293,28.293,0,1,1,0.14634,0" fill="none" stroke="#000" stroke-width="8.04878807">
+      </path>
+     </g>
+    </g>
+    <circle cx="{{ venus_x|stringformat:'f' }}" cy="{{ venus_y|stringformat:'f' }}" fill="none" id="venus-highlight" r="10" stroke="black" stroke-width="2" visibility="hidden">
+    </circle>
+    <circle cx="{{ venus_x|stringformat:'f' }}" cy="{{ venus_y|stringformat:'f' }}" fill="white" fill-opacity="0.01" id="venus_drawing" r="7.5" stroke="none">
+    </circle>
+   </g>
+  </svg>
+  <svg class="svg_obj svg_planet" id="mercury" visibility="{{ mercury_visibility }}">
+   <defs>
+   </defs>
+   <g>
+    <circle cx="{{ mercury_x|stringformat:'f' }}" cy="{{ mercury_y|stringformat:'f' }}" fill="white" fill-opacity="0.5" r="{{ mercury_circle }}"" stroke="none">
+    </circle>
+    <g transform="translate({{ mercury_x_corner|stringformat:'f' }},{{ mercury_y_corner|stringformat:'f' }}) scale({{ mercury_scale|stringformat:'f' }})">
+     <g>
+      <g transform="translate(-348.7552,-428.0905)">
+       <g fill="none" stroke="#000" stroke-dasharray="none" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(2.1942846,0,0,2.1942846,-421.54957,-627.18426)">
+        <path d="M112,36.5c0,6.351-5.15,11.5-11.5,11.5-6.351,0-11.5-5.149-11.5-11.5s5.149-11.5,11.5-11.5c6.3513,0,11.5,5.1487,11.5,11.5z" stroke-dashoffset="0" stroke-width="3.125" style="color:#000000;" transform="matrix(0.96,0,0,0.96,277.357,466.9525)">
+        </path>
+        <path d="M111.95,37.604c-0.61,6.322-6.23,10.953-12.554,10.343-5.483-0.529-9.821-4.871-10.344-10.354" stroke-dashoffset="0" stroke-width="3.70043731" style="color:#000000;" transform="matrix(0.810715,0,0,0.810715,292.4483,451.9429)">
+        </path>
+        <path d="m373.84,512.99,0,12" stroke-width="3">
+        </path>
+        <path d="m368.84,519.99,10,0" stroke-width="3">
+        </path>
+       </g>
+      </g>
+     </g>
+    </g>
+    <circle cx="{{ mercury_x|stringformat:'f' }}" cy="{{ mercury_y|stringformat:'f' }}" fill="none" id="mercury-highlight" r="10" stroke="black" stroke-width="2" visibility="hidden">
+    </circle>
+    <circle cx="{{ mercury_x|stringformat:'f' }}" cy="{{ mercury_y|stringformat:'f' }}" fill="white" fill-opacity="0.01" id="mercury_drawing" r="7.5" stroke="none">
+    </circle>
+   </g>
+  </svg>
+  <svg class="svg_obj svg_planet" id="moon" visibility="{{ moon_visibility }}">
+   <defs>
+   </defs>
+   <g>
+    <circle cx="{{ moon_x|stringformat:'f' }}" cy="{{ moon_y|stringformat:'f' }}" fill="white" fill-opacity="0.5" r="{{ moon_circle }}"" stroke="none">
+    </circle>
+    <g transform="translate({{ moon_x_corner|stringformat:'f' }},{{ moon_y_corner|stringformat:'f' }}) scale({{ moon_scale|stringformat:'f' }})">
+     <g>
+      <defs>
+       <style type="text/css">
+        #crescent {
+        fill: none;
+        stroke: black;
+        stroke-width: 3;
+        stroke-linejoin: round;
+      }
+       </style>
+      </defs>
+      <path d="m19.653,5.2083a46.875,46.875,0,0,1,0,89.583,46.875,46.875,0,1,0,0,-89.583z" fill="none" stroke="#000" stroke-linejoin="round" stroke-width="6.25">
+      </path>
+     </g>
+    </g>
+    <circle cx="{{ moon_x|stringformat:'f' }}" cy="{{ moon_x|stringformat:'f' }}" fill="none" id="moon-highlight" r="10" stroke="black" stroke-width="2" visibility="hidden">
+    </circle>
+    <circle cx="{{ moon_x|stringformat:'f' }}" cy="{{ moon_x|stringformat:'f' }}" fill="white" fill-opacity="0.01" id="moon_drawing" r="7.5" stroke="none">
+    </circle>
+   </g>
+  </svg>
+  <svg class="svg_obj svg_planet" id="sun" visibility="{{ sun_visibility }}">
+   <defs>
+   </defs>
+   <g>
+    <circle cx="{{ sun_x|stringformat:'f' }}" cy="{{ sun_y|stringformat:'f' }}" fill="white" fill-opacity="0.5" r="{{ sun_circle }}" stroke="none">
+    </circle>
+    <g transform="translate({{ sun_x_corner|stringformat:'f' }},{{ sun_y_corner|stringformat:'f' }}) scale({{ sun_scale|stringformat:'f' }})">
+     <g>
+      <path d="m4.5114E-7,49.861a50,50,0,1,1,0,0.27778zm8.3333,0a41.667,41.667,0,1,0,0,-0.27778zm30.556,0a11.111,11.111,0,1,0,0,-0.27778z">
+      </path>
+     </g>
+    </g>
+    <circle cx="300" cy="300" fill="none" id="sun-highlight" r="10" stroke="black" stroke-width="2" visibility="hidden">
+    </circle>
+    <circle cx="300" cy="300" fill="white" fill-opacity="0.01" id="sun_drawing" r="7.5" stroke="none">
+    </circle>
+   </g>
+  </svg>
+ </svg>
+ <svg id="aspects">
+    {% for aspect in aspects %}
+    {{ aspect.get_svg|safe }}{% endfor %}
+ </svg>
+ <svg id="svg_houses">
+  <svg class="svg_house"> <line id="house_1" x1="0" y1="0" x2="0" y2="0" style="stroke:rgb(0,0,0);stroke-width:1"> </line></svg>
+  <svg class="svg_house"> <line id="house_2" x1="0" y1="0" x2="0" y2="0" style="stroke:rgb(0,0,0);stroke-width:1"> </line></svg>
+  <svg class="svg_house"> <line id="house_3" x1="0" y1="0" x2="0" y2="0" style="stroke:rgb(0,0,0);stroke-width:1"> </line></svg>
+  <svg class="svg_house"> <line id="house_4" x1="0" y1="0" x2="0" y2="0" style="stroke:rgb(0,0,0);stroke-width:1"> </line></svg>
+  <svg class="svg_house"> <line id="house_5" x1="0" y1="0" x2="0" y2="0" style="stroke:rgb(0,0,0);stroke-width:1"> </line></svg>
+  <svg class="svg_house"> <line id="house_6" x1="0" y1="0" x2="0" y2="0" style="stroke:rgb(0,0,0);stroke-width:1"> </line></svg>
+  <svg class="svg_house"> <line id="house_7" x1="0" y1="0" x2="0" y2="0" style="stroke:rgb(0,0,0);stroke-width:1"> </line></svg>
+  <svg class="svg_house"> <line id="house_8" x1="0" y1="0" x2="0" y2="0" style="stroke:rgb(0,0,0);stroke-width:1"> </line></svg>
+  <svg class="svg_house"> <line id="house_9" x1="0" y1="0" x2="0" y2="0" style="stroke:rgb(0,0,0);stroke-width:1"> </line></svg>
+  <svg class="svg_house"> <line id="house_10" x1="0" y1="0" x2="0" y2="0" style="stroke:rgb(0,0,0);stroke-width:1"> </line></svg>
+  <svg class="svg_house"> <line id="house_11" x1="0" y1="0" x2="0" y2="0" style="stroke:rgb(0,0,0);stroke-width:1"> </line></svg>
+  <svg class="svg_house"> <line id="house_12" x1="0" y1="0" x2="0" y2="0" style="stroke:rgb(0,0,0);stroke-width:1"> </line></svg>
+ </svg>
+</svg>

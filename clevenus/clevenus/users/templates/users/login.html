@@ -1,0 +1,33 @@
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Login </title>
+
+
+    <link rel="stylesheet" href="{% static 'vendor/login/css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/login/css/style.css' %}">
+
+
+
+
+  </head>
+
+  <body>
+
+    <div class="wrap">
+		<div class="avatar">
+      <img src="http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons-256/blue-white-pearls-icons-natural-wonders/050778-blue-white-pearl-icon-natural-wonders-moon-and-planets.png">
+		</div>
+		<input type="text" placeholder="Usuario" required>
+		<div class="bar">
+			<i></i>
+		</div>
+		<input type="password" placeholder="Senha" required>
+		<a href="" class="forgot_link">esqueceu ?</a>
+		<button>Entrar</button>
+	</div>
+  </body>
+</html>
