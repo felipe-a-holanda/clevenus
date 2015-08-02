@@ -14,14 +14,24 @@
 
 
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="{% static "clevenus/navbar.css" %}">
-    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-    <!-- Latest compiled and minified JavaScript -->
 
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap-3.3.5-dist/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap-3.3.5-dist/css/bootstrap-theme.css' %}">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="{% static "clevenus/navbar.css" %}">
+
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="{% static 'vendor/jquery/jquery-2.1.4.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap-3.3.5-dist/js/bootstrap.js' %}"></script>
+
+    <!--
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    -->
+
 
 
 
@@ -32,6 +42,15 @@
 {% include 'navbar.html' %}
     {% block content %}
     {% endblock %}
+<script src="{% static 'vendor/typeahead.js/typeahead.bundle.min.js' %}"></script>
+    <script>
+        $('#query').typeahead([
+{
+name: 'planets',
+local: [ "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune" ]
+}
+]);
+    </script>
 
 </body>
 </html>

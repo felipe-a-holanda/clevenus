@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="col-md-10 col-md-offset-1">
+        <h1>{{ planet }}</h1>
+    <script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization',
+       'version':'1','packages':['timeline']}]}"></script>
+<script type="text/javascript">
+
+google.setOnLoadCallback(drawChart);
+function drawChart() {
+  var container = document.getElementById('example2.1');
+  var chart = new google.visualization.Timeline(container);
+  var dataTable = new google.visualization.DataTable();
+
+  dataTable.addColumn({ type: 'string', id: 'Term' });
+  dataTable.addColumn({ type: 'string', id: 'Name' });
+  dataTable.addColumn({ type: 'date', id: 'Start' });
+  dataTable.addColumn({ type: 'date', id: 'End' });
+
+  dataTable.addRows([
+    [ '<a href="www.google.com">1</a>', 'George Washington', new Date(1789, 3, 30), new Date(1797, 2, 4) ],
+    [ '2', 'John Adams',        new Date(1797, 2, 4),  new Date(1801, 2, 4) ],
+    [ '3', 'Thomas Jefferson',  new Date(1801, 2, 4),  new Date(1809, 2, 4) ]]);
+
+  chart.draw(dataTable);
+}
+</script>
+
+<div id="example2.1" style="height: 200px;"></div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Sign</th>
+            <th>Users</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        {% for sign in planet_in_signs %}
+            <tr>
+            <td><a href="{% url 'planet-in-sign' planet.slug sign.sign.slug %}">{{ sign }}</a></td>
+            <td>{{ sign.positions.all|length }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+{% endblock %}

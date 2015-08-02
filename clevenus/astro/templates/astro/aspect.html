@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
-{{ aspect }}
+    <div class="col-md-10 col-md-offset-1">
+    <h1><a href="{% url 'planet-view' aspect.p1.slug %}">{{ aspect.p1 }}</a> {{ aspect.type_verbose }} <a href="{% url 'planet-view' aspect.p2.slug %}">{{ aspect.p2 }}</a></h1>
+    {% include 'astro/user_grid.html' %}
+    </div>
 {% endblock %}

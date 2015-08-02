@@ -64,7 +64,7 @@ class PlanetPosition(models.Model):
     house = models.ForeignKey(House, null=True, blank=True)
     angle = models.FloatField()
     speed = models.FloatField()
-    planet_in_sign = models.ForeignKey(PlanetInSign)
+    planet_in_sign = models.ForeignKey(PlanetInSign, related_name='positions')
     planet_in_house = models.ForeignKey(PlanetInHouse, null=True, blank=True)
 
     def save(self, *args, **kwargs):
@@ -92,13 +92,13 @@ class PlanetPosition(models.Model):
     def get_y_aspect(self):
         return self.get_y(planet_radius=200)
 
-    def get_chart_params(self, planet_radius=220, planet_size=7, planet_circle=10):
+    def get_svg_params(self, planet_radius=220, planet_size=7, planet_circle=10):
         params = dict()
         planet_scale = planet_size*2/100.0
         chart_center_x = 300
         chart_center_y = 300
-        p_x = self.get_x()
-        p_y = self.get_y()
+        p_x = self.get_x(planet_radius, chart_center_x)
+        p_y = self.get_y(planet_radius, chart_center_y)
 
         visibility = True
         params[self.planet.code+'_visibility'] = 'visible' if visibility else 'hidden'
@@ -115,7 +115,7 @@ class PlanetPosition(models.Model):
 class ChartAspect(models.Model):
     name = models.CharField(max_length=256)
     chart = models.ForeignKey('Chart')
-    aspect = models.ForeignKey(Aspect)
+    aspect = models.ForeignKey(Aspect, related_name='charts')
     angle = models.FloatField()
     exact = models.FloatField()
     diff = models.FloatField()
@@ -340,6 +340,7 @@ class Chart(models.Model):
         asc = 0
         if house_angles:
             asc = house_angles[0]
+        ChartAspect.objects.filter(chart=self).delete()
         for i, a1 in enumerate(positions):
             for j, a2 in enumerate(positions):
                 if i < j:
@@ -379,10 +380,15 @@ class Chart(models.Model):
     def create_planets_in_houses(self, planet_angles, house_angles):
         for planet in Planet.objects.all():
             angle = planet_angles[planet.index]
+
             for i in range(len(house_angles)):
                 if house_angles[i] <= angle < house_angles[(i+1) % len(house_angles)]:
                     house = House.objects.get(index=i)
                     break
+                if house_angles[i] > house_angles[(i+1) % len(house_angles)]:
+                    if house_angles[i] <= angle or angle < house_angles[(i+1) % len(house_angles)]:
+                        house = House.objects.get(index=i)
+                        break
             p = self.planets_in_houses.filter(planet=planet)
             if p:
                 p = p[0]

@@ -9,10 +9,11 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name='profile')
     name = models.CharField(max_length=256)
     date = models.DateField(null=True)
-    time = models.TimeField(null=True)
+    time = models.TimeField(null=True, blank=True)
     datetime = models.DateTimeField(null=True)
     city = models.ForeignKey('charts.City', null=True)
     chart = models.ForeignKey('charts.Chart', related_name='profile', null=True)
+    img = models.ImageField(null=True, blank=True)
 
     @classmethod
     def create(cls, user, date, time, city_name):
@@ -44,13 +45,21 @@ class UserProfile(models.Model):
         self.name = "%s %s" % (self.user.first_name, self.user.last_name)
         self.update_datetime_city()
         super(UserProfile, self).save(*args, **kwargs)
-        if self.date:
-            self.chart = Chart.create(user=self.user.profile, name=self.name, date=self.date, time=self.time, city=self.city)
+        if self.chart:
+            self.chart.date = self.date
+            self.chart.time = self.time
             self.chart.save()
+        else:
+            if self.date:
+                self.chart = Chart.create(user=self.user.profile, name=self.name, date=self.date, time=self.time, city=self.city)
+                self.chart.save()
         super(UserProfile, self).save(force_update=True)
 
     def __unicode__(self):
         return self.name
+
+    def __cmp__(self, other):
+        return cmp(self.name, other.name)
 
 
 

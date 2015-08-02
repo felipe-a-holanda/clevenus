@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" version="1.0" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="0 0 100 100">
+	<g transform="translate(-348.7552,-428.0905)">
+		<g transform="matrix(2.6315762,0,0,2.6315762,-586.51603,-846.19122)">
+			<path d="m363.4,509.73-7,0,0-1,4-1,0-20-4-1,0-1,7,0,0,24z" fill-rule="evenodd" fill="#000"/>
+			<path d="m385.4,509.73,7,0,0-1-4-1,0-20,4-1,0-1-7,0,0,24z" fill-rule="evenodd" fill="#000"/>
+			<path stroke-linejoin="miter" d="m362.4,497.73,24,0" stroke="#000" stroke-linecap="butt" stroke-miterlimit="4" stroke-dasharray="none" stroke-width="3" fill="none"/>
+			<path stroke-linejoin="miter" style="color:#000000;" d="m374.4,485.73,0,26" stroke-dashoffset="0" stroke="#000" stroke-linecap="butt" stroke-miterlimit="4" stroke-dasharray="none" stroke-width="3" fill="none"/>
+			<path stroke-linejoin="miter" style="color:#000000;" d="m40,211c0,2.2091-1.7909,4-4,4s-4-1.7909-4-4,1.7909-4,4-4,4,1.7909,4,4z" transform="translate(338.4034,305.7276)" stroke-dashoffset="0" stroke="#000" stroke-linecap="butt" stroke-miterlimit="4" stroke-dasharray="none" stroke-width="3" fill="none"/>
+		</g>
+	</g>
+</svg>

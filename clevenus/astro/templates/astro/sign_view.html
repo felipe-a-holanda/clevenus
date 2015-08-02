@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="col-md-10 col-md-offset-1">
+        <h1>{{ sign }}</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Planet</th>
+            <th>Users</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        {% for planet in planet_in_signs %}
+            <tr>
+            <td><a href="{% url 'planet-in-sign' planet.planet.slug sign.slug %}">{{ planet }}</a></td>
+            <td>{{ planet.positions.all|length }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+{% endblock %}

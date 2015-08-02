@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
-{{ planet_in_sign }}
+    <div class="col-md-10 col-md-offset-1">
+    <h1><a href="{% url 'planet-view' planet_in_sign.planet.slug %}">{{ planet_in_sign.planet }}</a> in <a href="{% url 'sign-view' planet_in_sign.sign.slug %}">{{ planet_in_sign.sign }}</a></h1>
+    {% include 'astro/user_grid.html' %}
+    </div>
 {% endblock %}

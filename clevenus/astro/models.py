@@ -136,6 +136,10 @@ class Aspect(Interpretable):
     def __unicode__(self):
         return self.name
 
+    @property
+    def type_verbose(self):
+        return dict([(i[0], i[3]) for i in Aspect.TYPES])[self.type]
+
     def save(self, *args, **kwargs):
         types = {i[0]: i for i in Aspect.TYPES}
         self.name = "%s %s %s" % (self.p1.name, types[self.type][3], self.p2.name)

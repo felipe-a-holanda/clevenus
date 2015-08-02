@@ -9,20 +9,58 @@ from interpretations.models import Interpretation
 from interpretations.forms import InterpretationForm
 from datetime import datetime
 
-@atomic
+from .utils import ChartCalc
+
+
 def chartNow(request):
-    return render(request, 'charts/detail.html')
-    admin = UserProfile.objects.get(user__username='admin')
-    chart = Chart.objects.get(user=admin, name='Now')
-    d = datetime.now()
-    chart.date = d.date()
-    chart.time = d.time()
-    chart.save()
-    return chartView(request, chart.pk)
+    chart = ChartCalc(datetime.now())
+    planets = chart.planets
+    aspects = chart.aspects
+    asc = chart.asc
+    params = dict()
+
+    params['asc'] = asc
+    for p in chart.planets:
+        params.update(p.get_svg_params())
+    params['chart'] = chart
+    params['planets'] = planets
+    params['aspects'] = aspects
+
+    return render(request, 'charts/detail.html', params)
 
 
 
 def chartView(request, chart_id):
+    chart = get_object_or_404(Chart, pk=chart_id)
+    chart = ChartCalc(chart.datetime, chart.lat, chart.lng)
+
+    planets = chart.planets
+    aspects = chart.aspects
+    params = dict()
+
+    asc = chart.asc
+    #asc = 0
+    params['asc'] = asc
+    for p in planets:
+        params.update(p.get_svg_params())
+
+
+
+    params['chart'] = chart
+
+    params['planets'] = planets
+    params['aspects'] = aspects
+    params['action'] = '/chart/post'
+
+    return render(request, 'charts/detail.html', params)
+
+
+
+
+
+
+
+def chartView_old(request, chart_id):
     chart = get_object_or_404(Chart, pk=chart_id)
 
     planets = chart.planetposition_set.all().select_related('planet',  'sign', 'house')[:10]
@@ -33,7 +71,7 @@ def chartView(request, chart_id):
     #asc = 0
     params['asc'] = asc
     for p in planets:
-        params.update(p.get_chart_params())
+        params.update(p.get_svg_params())
 
 
 
