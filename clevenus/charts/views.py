@@ -13,9 +13,11 @@ from .utils import ChartCalc
 
 
 def chartNow(request):
-    chart = ChartCalc(datetime.now())
+    now = datetime.now()
+    chart = ChartCalc(now, now.time())
     planets = chart.planets
     aspects = chart.aspects
+    aspects = [a for a in chart.aspects if a.p1.i<10 and a.p2.i<10 and a.diff<a.aspect.orb]
     asc = chart.asc
     params = dict()
 
@@ -23,7 +25,7 @@ def chartNow(request):
     for p in chart.planets:
         params.update(p.get_svg_params())
     params['chart'] = chart
-    params['planets'] = planets
+    params['planets'] = [p for p in planets if p.i<10]
     params['aspects'] = aspects
 
     return render(request, 'charts/detail.html', params)
@@ -32,10 +34,12 @@ def chartNow(request):
 
 def chartView(request, chart_id):
     chart = get_object_or_404(Chart, pk=chart_id)
-    chart = ChartCalc(chart.datetime, chart.lat, chart.lng)
+
+    chart = ChartCalc(chart.datetime, chart.time, chart.lat, chart.lng)
+
 
     planets = chart.planets
-    aspects = chart.aspects
+    aspects = [a for a in chart.aspects if a.p1.i<10 and a.p2.i<10 and a.diff<a.aspect.orb]
     params = dict()
 
     asc = chart.asc
@@ -47,6 +51,7 @@ def chartView(request, chart_id):
 
 
     params['chart'] = chart
+    params['houses'] = chart.houses
 
     params['planets'] = planets
     params['aspects'] = aspects

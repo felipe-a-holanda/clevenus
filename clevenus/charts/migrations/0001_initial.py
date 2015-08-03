@@ -70,8 +70,7 @@ class Migration(migrations.Migration):
                 ('angle', models.FloatField()),
                 ('exact', models.FloatField()),
                 ('diff', models.FloatField()),
-                ('asc', models.FloatField(default=0)),
-                ('aspect', models.ForeignKey(to='astro.Aspect')),
+                ('aspect', models.ForeignKey(related_name='chart_aspects', to='astro.Aspect')),
                 ('chart', models.ForeignKey(to='charts.Chart')),
             ],
         ),
@@ -88,36 +87,10 @@ class Migration(migrations.Migration):
                 ('timezone', timezone_field.fields.TimeZoneField()),
             ],
         ),
-        migrations.CreateModel(
-            name='PlanetPosition',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('name', models.CharField(max_length=256)),
-                ('asc', models.FloatField(default=0)),
-                ('angle', models.FloatField()),
-                ('speed', models.FloatField()),
-                ('chart', models.ForeignKey(to='charts.Chart')),
-                ('house', models.ForeignKey(blank=True, to='astro.House', null=True)),
-                ('planet', models.ForeignKey(to='astro.Planet')),
-                ('planet_in_house', models.ForeignKey(blank=True, to='astro.PlanetInHouse', null=True)),
-                ('planet_in_sign', models.ForeignKey(to='astro.PlanetInSign')),
-                ('sign', models.ForeignKey(to='astro.Sign')),
-            ],
-        ),
-        migrations.AddField(
-            model_name='chartaspect',
-            name='p1',
-            field=models.ForeignKey(related_name='chart_aspects_first', verbose_name=b'First Planet', to='charts.PlanetPosition'),
-        ),
-        migrations.AddField(
-            model_name='chartaspect',
-            name='p2',
-            field=models.ForeignKey(related_name='chart_aspects_second', verbose_name=b'Second Planet', to='charts.PlanetPosition'),
-        ),
         migrations.AddField(
             model_name='chart',
             name='aspects',
-            field=models.ManyToManyField(to='astro.Aspect', through='charts.ChartAspect'),
+            field=models.ManyToManyField(related_name='charts', through='charts.ChartAspect', to='astro.Aspect'),
         ),
         migrations.AddField(
             model_name='chart',
@@ -127,21 +100,16 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='chart',
             name='houses_in_signs',
-            field=models.ManyToManyField(to='astro.HouseInSign'),
-        ),
-        migrations.AddField(
-            model_name='chart',
-            name='planet_positions',
-            field=models.ManyToManyField(to='astro.Planet', through='charts.PlanetPosition'),
+            field=models.ManyToManyField(related_name='charts', to='astro.HouseInSign'),
         ),
         migrations.AddField(
             model_name='chart',
             name='planets_in_houses',
-            field=models.ManyToManyField(to='astro.PlanetInHouse'),
+            field=models.ManyToManyField(related_name='charts', to='astro.PlanetInHouse'),
         ),
         migrations.AddField(
             model_name='chart',
             name='planets_in_signs',
-            field=models.ManyToManyField(to='astro.PlanetInSign'),
+            field=models.ManyToManyField(related_name='charts', to='astro.PlanetInSign'),
         ),
     ]

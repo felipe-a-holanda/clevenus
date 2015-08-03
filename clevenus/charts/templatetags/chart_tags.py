@@ -28,9 +28,11 @@ SIGN_SVG = ['01-aries.svg',
 @register.filter
 def sign_img(value):
     r = ''
-    if value:
+    if value and value>=0:
         i = int(value/30)
         r = static('clevenus/signs/'+SIGN_SVG[i])
+    else:
+        r = static('clevenus/signs/00-unknown.svg')
 
 
     return r

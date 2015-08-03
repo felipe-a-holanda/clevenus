@@ -1,17 +1,18 @@
 {% load chart_tags %}
 <div class="row">
-    {% for user in users %}
+    {% for chart in charts %}
         <div class="col-sm-3 col-md-2">
             <div class="thumbnail">
-                <a href="{% url 'user-profile' user.user.username %}">
-                    <img class="img-circle" src="{{ MEDIA_URL }}{{ user.img }}" alt="..." style="min-height:200px;height:200px;">
+                <a href="{% url 'user-profile' chart.user.user.username %}">
+                    <img class="img-circle" src="{{ MEDIA_URL }}{{ chart.user.img }}" alt="..." style="min-height:200px;height:200px;">
                 </a>
-                Asc<img width="20" height="20" src="{{ user.chart.house_1|sign_img }}">
-                Sun<img width="20" height="20" src="{{ user.chart.sun|sign_img }}">
-                Moon<img width="20" height="20" src="{{ user.chart.moon|sign_img }}">
+
+                Asc<img width="20" height="20" src="{{ chart.house_1|sign_img }}">
+                Sun<img width="20" height="20" src="{{ chart.sun|sign_img }}">
+                Moon<img width="20" height="20" src="{{ chart.moon|sign_img }}">
 
                 <div class="caption" style="white-space:nowrap;">
-                    <a href="{% url 'user-profile' user.user.username %}">{{ user.name }}</a>
+                    <a href="{% url 'user-profile' chart.user.user.username %}">{{ chart.name }}</a>
                 </div>
             </div>
         </div>

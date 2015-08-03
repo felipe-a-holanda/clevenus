@@ -129,6 +129,7 @@ class Aspect(Interpretable):
     name = models.CharField(max_length=40, unique=True)
     type = models.CharField(max_length=3, choices=[i[:2] for i in TYPES])
     degrees = models.IntegerField()
+    orb = models.FloatField(default=0)
     p1 = models.ForeignKey(Planet, verbose_name='First Planet', related_name='aspects_first')
     p2 = models.ForeignKey(Planet, verbose_name='Second Planet', related_name='aspects_second')
     slug = models.SlugField()

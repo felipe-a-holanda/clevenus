@@ -17,12 +17,6 @@ SIGNS = ['Aries',
 
 
 
-class PositionInline(admin.TabularInline):
-    model = PlanetPosition
-    fields = ['name',]
-    readonly_fields = ['name',]
-
-
 class ChartAdmin(admin.ModelAdmin):
     @classmethod
     def sign(cls, self, planet):
@@ -65,5 +59,3 @@ class ChartAspectAdmin(admin.ModelAdmin):
 
 admin.site.register(Chart, ChartAdmin)
 admin.site.register(City, CityAdmin)
-admin.site.register(PlanetPosition)
-admin.site.register(ChartAspect, ChartAspectAdmin)

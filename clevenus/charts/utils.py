@@ -5,19 +5,69 @@ import swisseph as swe
 
 swe.set_ephe_path('/usr/share/libswe/ephe/')
 
-from .models import Planet, Aspect, Sign
+from astro.models import Planet, House, Aspect, Sign, PlanetInSign, PlanetInHouse, HouseInSign
 
-PLANETS = {p.index: p for p in Planet.objects.all().order_by('index')}
-ASPECTS = {(a.p1.index, a.p2.index, a.degrees): a for a in Aspect.objects.all().select_related('p1', 'p2')}
-SIGNS = {s.index: s for s in Sign.objects.all().order_by('index')}
+class cached_property(object):
+    """
+    Descriptor (non-data) for building an attribute on-demand on first use.
+    """
+    def __init__(self, factory):
+        """
+        <factory> is called such: factory(instance) to build the attribute.
+        """
+        self._attr_name = factory.__name__
+        self._factory = factory
 
+    def __get__(self, instance, owner):
+        # Build the attribute.
+        attr = self._factory(instance)
+
+        # Cache the value; hide ourselves.
+        setattr(instance, self._attr_name, attr)
+
+        return attr
+
+class PlanetConst(object):
+    def __init__(self):
+        pass
+
+    @cached_property
+    def planets(self):
+        return {p.index: p for p in Planet.objects.all().order_by('index')}
+
+    @cached_property
+    def houses(self):
+        return {s.index: s for s in House.objects.all().order_by('index')}
+
+    @cached_property
+    def signs(self):
+        return {s.index: s for s in Sign.objects.all().order_by('index')}
+
+
+    @cached_property
+    def aspects(self):
+        return {(a.p1.index, a.p2.index, a.degrees): a for a in Aspect.objects.all().select_related('p1', 'p2')}
+
+    @cached_property
+    def planet_in_signs(self):
+        return {(i.planet.index, i.sign.index): i for i in PlanetInSign.objects.all().select_related('planet', 'sign')}
+
+    @cached_property
+    def house_in_signs(self):
+        return {(i.house.index, i.sign.index): i for i in HouseInSign.objects.all().select_related('house', 'sign')}
+
+    @cached_property
+    def planet_in_houses(self):
+        return {(i.planet.index, i.house.index): i for i in PlanetInHouse.objects.all().select_related('planet', 'house')}
+
+CONSTS = PlanetConst()
 
 class PlanetPosition(object):
     def __init__(self, i, eph, asc=0, house_cusps=None):
         x, y, z, dx, dy, dz = eph
         self.i = i
-        self.planet = PLANETS[i]
-        self.code = PLANETS[i].code
+        self.planet = CONSTS.planets[i]
+        self.code = CONSTS.planets[i].code
 
         self.x = x
         self.angle = x
@@ -29,10 +79,14 @@ class PlanetPosition(object):
 
         self.asc = asc
         self.sign_i = int(x / 30)
-        self.sign = SIGNS[self.sign_i]
+        self.sign = CONSTS.signs[self.sign_i]
+        self.planet_in_sign = CONSTS.planet_in_signs[(self.i, self.sign_i)]
         self.house_i = -1
+        self.house = None
         if house_cusps:
             self.house_i = self.calc_house(self.x, house_cusps)
+            self.house = CONSTS.houses[self.house_i]
+            self.planet_in_house = CONSTS.planet_in_houses[(self.i, self.house_i)]
 
     def calc_house(self, angle, house_cusps):
         for i in range(12):
@@ -76,12 +130,21 @@ class PlanetPosition(object):
         params[self.code + '_y_corner'] = p_y - planet_size
         return params
 
+class HouseCusp(object):
+    def __init__(self, i, angle):
+        self.i = i
+        self.angle = angle
+        self.house = CONSTS.houses[i]
+        self.house_in_sign = CONSTS.house_in_signs[(i, int(angle/30))]
+
+
+
 class ChartAspect(object):
 
     def __init__(self, p1, p2):
         self.p1 = p1
         self.p2 = p2
-        self.diff, self.exact, self.aspect = self.calc(p1, p2)
+        self.angle, self.exact, self.diff, self.aspect = self.calc(p1, p2)
 
     def calc(self, p1, p2):
         a1 = p1.x
@@ -95,12 +158,12 @@ class ChartAspect(object):
         #if exact == 30 or exact == 150:
         #    return None
 
-        if (p1.i, p2.i, exact) in ASPECTS:
-            aspect = ASPECTS[(p1.i, p2.i, exact)]
+        if (p1.i, p2.i, exact) in CONSTS.aspects:
+            aspect = CONSTS.aspects[(p1.i, p2.i, exact)]
         else:
             aspect = None
 
-        return diff, exact, aspect
+        return angle, exact, diff, aspect
 
     def get_svg(self):
         params = dict()
@@ -124,24 +187,37 @@ class ChartAspect(object):
 
 
 class ChartCalc(object):
-    def __init__(self, datetime, lat=None, lng=None):
+    def __init__(self, datetime, time=None, lat=None, lng=None):
         self.datetime = datetime
+        self.time = time
         self.lat = lat
         self.lng = lng
         self.asc = 0
-        self.planets = self.calc(self.lat, self.lng)
+
+        self.j = self.calc_julday()
+
+        self.planets = self.calc_planets(self.lat, self.lng)
+        self.houses = None
+        if time and lat and lng:
+            self.houses = self.calc_houses()
         self.aspects = self.calc_aspects(self.planets)
 
-    def calc(self, lat, lng, n_planets=10):
+
+    def calc_julday(self):
         if self.datetime.tzinfo is None:
             self.datetime = pytz.utc.localize(self.datetime)
-        datetime_utc = self.datetime.astimezone(pytz.utc)
-        j = self.julday(datetime_utc)
+        j = self.julday(self.datetime.astimezone(pytz.utc))
+        return j
+
+
+    def calc_planets(self, lat, lng, n_planets=23):
+        j = self.j
         ephs = [swe.calc_ut(j, i) for i in range(n_planets)]
         asc = 0
         houses = None
-        if lat and lng:
+        if self.time and lat and lng:
             houses = swe.houses(j, self.lat, self.lng)[0]
+            self.houses = houses
             asc = houses[0]
             self.asc = asc
 
@@ -151,11 +227,18 @@ class ChartCalc(object):
 
         return positions
 
+    def calc_houses(self):
+        house_cusps = swe.houses(self.j, self.lat, self.lng)[0]
+        houses = []
+        for i, cusp in enumerate(house_cusps):
+            houses.append(HouseCusp(i, cusp))
+        return houses
+
     def calc_aspects(self, positions):
         aspects = []
         for p1 in positions:
             for p2 in positions:
-                if p1 != p2:
+                if p1 != p2 and p1.i<10 and p2.i<10:
                     aspects.append(ChartAspect(p1, p2))
         return filter(lambda x: x.aspect is not None, aspects)
 

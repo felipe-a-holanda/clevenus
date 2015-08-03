@@ -15,7 +15,7 @@
         {% for planet in planet_in_signs %}
             <tr>
             <td><a href="{% url 'planet-in-sign' planet.planet.slug sign.slug %}">{{ planet }}</a></td>
-            <td>{{ planet.positions.all|length }}</td>
+            <td>{{ planet.charts.all|length }}</td>
             </tr>
         {% endfor %}
         </tbody>

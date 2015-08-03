@@ -1,19 +1,24 @@
 {% extends 'base.html' %}
 {% load chart_tags %}
+
+
 {% block content %}
     <div class="container">
     <div class="row row-centered">
-        <div class="col-xs-3 col-centered"><p>{{ chart.name }}</p></div>
+        <div class="col-xs-3 col-centered"><p>{{ user.name }}</p></div>
 
     </div>
     <div class="row row-centered">
-
-        <div class="col-xs-3 col-centered"><p>{{ chart.datetime }} {{ chart.datetime.tzinfo }}</p></div>
+        {% if chart.time %}
+            <div class="col-xs-3 col-centered"><p>{{ chart.datetime }} {{ chart.datetime.tzinfo }}</p></div>
+        {% else %}
+            <div class="col-xs-3 col-centered"><p>{{ chart.datetime.date }}</p></div>
+        {% endif %}
     </div>
 
     <div class="row row-centered">
 
-        <div class="col-xs-6 col-centered">
+        <div class="col-xs-6 col-centered" >
             {% include 'charts/chart.svg' %}
         </div>
     </div>
@@ -45,8 +50,8 @@
                                 in {{ planet.sign }}</a></td>
                         {% if houses %}
                         <td>
-                            <a href="{% url 'planet-in-house' planet.planet.slug planet.house.slug %}">{{ planet.planet.name }}
-                                in {{ planet.house }}</a></td>
+                            <a href="{% url 'planet-in-house' planet.planet.slug planet.house.house.slug %}">{{ planet.planet.name }}
+                                in {{ planet.house.house }}</a></td>
                         {% endif %}
                     </tr>
                 {% endfor %}

@@ -31,16 +31,34 @@ function drawChart() {
     <table class="table">
         <thead>
         <tr>
-            <th>Sign</th>
+            <th>House</th>
             <th>Users</th>
         </tr>
 
         </thead>
         <tbody>
-        {% for sign in planet_in_signs %}
+        {% for house in house_in_signs %}
             <tr>
-            <td><a href="{% url 'planet-in-sign' planet.slug sign.sign.slug %}">{{ sign }}</a></td>
-            <td>{{ sign.charts.all|length }}</td>
+            <td><a href="{% url 'house-in-sign' house.house.slug house.sign.slug %}">{{ house }}</a></td>
+            <td>{{ house.charts.all|length }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Planet</th>
+            <th>Users</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        {% for planet in planet_in_houses %}
+            <tr>
+            <td><a href="{% url 'planet-in-house' planet.planet.slug house.slug %}">{{ planet }}</a></td>
+            <td>{{ planet.charts.all|length }}</td>
             </tr>
         {% endfor %}
         </tbody>

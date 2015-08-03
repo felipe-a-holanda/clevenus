@@ -52,6 +52,15 @@ ASPECT_TYPES = [('con', 'Conjunction', 0, 'conjunct'),
              ('opp', 'Opposition', 180, 'opposite'),
              ]
 
+def orb(p1, p2, aspect):
+    if p1.index >= 10 or p2.index >= 10:
+        return 0
+    if aspect == 60:
+        return 6
+    return 10
+
+
+
 class Command(BaseCommand):
     help = 'Populate initial astro data'
 
@@ -116,7 +125,7 @@ class Command(BaseCommand):
             for p2 in planets:
                 if p2 > p1:
                     for type in ASPECT_TYPES:
-                        o, _ = Aspect.objects.get_or_create(p1=p1, p2=p2, type=type[0])
+                        o, _ = Aspect.objects.get_or_create(p1=p1, p2=p2, type=type[0], orb=orb(p1, p2, type[2]))
                         o.save()
                         print ' ', o
 

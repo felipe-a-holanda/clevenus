@@ -36,6 +36,7 @@ class HouseInSignAdmin(admin.ModelAdmin):
 
 class AspectAdmin(admin.ModelAdmin):
     exclude = ['iname']
+    search_fields = ['p1__name', 'p2__name', 'degrees']
     ordering = ['p1', 'p2', 'degrees']
 
 admin.site.register(Sign, SignAdmin)

@@ -5,6 +5,7 @@ from datetime import datetime
 from django.contrib.auth.models import User
 import csv
 from django.utils.text import slugify
+import traceback
 
 class Command(BaseCommand):
     help = 'Populate initial astro data'
@@ -38,21 +39,31 @@ class Command(BaseCommand):
         except:
             r['first_name'] = r['name']
 
-        try:
-            u = User.create(**r)
-            u.save()
-        except Exception as e:
-            print 'error:', r['name'], e
-        else:
-            print 'user created:', r['name']
+        u = User.create(**r)
+        u.save()
+        #try:
+        #    u = User.create(**r)
+        #    u.save()
+        #except Exception as e:
+        #    print 'error:', r['name'], e
+        #else:
+        #    print 'user created:', r['name']
+        return u
 
     def create_users(self):
         rows = self.read_csv('data/users.csv')
         for r in rows:
+
+            #u = self.create_user(r)
+            #print u
             try:
-                self.create_user(r)
+                u = self.create_user(r)
             except Exception as e:
+
                 print 'error', r['name'], e
+                print(traceback.format_exc())
+            else:
+                print u
 
 
     @transaction.atomic()
@@ -68,8 +79,8 @@ class Command(BaseCommand):
 
 
     def handle(self, *args, **options):
-        self.create_sys_charts()
-        #self.create_users()
+        #self.create_sys_charts()
+        self.create_users()
 
     def x(self):
         c = City(name='Limoeiro do Norte')

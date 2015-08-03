@@ -5,20 +5,23 @@ from django.db.models.signals import post_save
 from datetime import datetime, time
 import pytz
 
+
 class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name='profile')
+    username = models.CharField(max_length=256)
     name = models.CharField(max_length=256)
     date = models.DateField(null=True)
     time = models.TimeField(null=True, blank=True)
     datetime = models.DateTimeField(null=True)
     city = models.ForeignKey('charts.City', null=True)
-    chart = models.ForeignKey('charts.Chart', related_name='profile', null=True)
+    chart = models.OneToOneField('charts.Chart', related_name='user', null=True)
     img = models.ImageField(null=True, blank=True)
 
     @classmethod
     def create(cls, user, date, time, city_name):
         self = UserProfile()
         self.user = user
+        self.username = user.username
         self.date = date
         self.time = time
         self.city_name = city_name
@@ -51,7 +54,7 @@ class UserProfile(models.Model):
             self.chart.save()
         else:
             if self.date:
-                self.chart = Chart.create(user=self.user.profile, name=self.name, date=self.date, time=self.time, city=self.city)
+                self.chart = Chart.create(name=self.name, date=self.date, time=self.time, city=self.city)
                 self.chart.save()
         super(UserProfile, self).save(force_update=True)
 

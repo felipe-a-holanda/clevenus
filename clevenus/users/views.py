@@ -8,10 +8,12 @@ def user_profile_view(request, username):
     user = get_object_or_404(UserProfile, user__username=username)
 
     chart = user.chart
-    chart = ChartCalc(chart.datetime, chart.lat, chart.lng)
+    chart.save()
+    chart = ChartCalc(chart.datetime, chart.time, chart.lat, chart.lng)
 
-    planets = chart.planets
-    aspects = chart.aspects
+    planets = chart.planets[:10]
+    #aspects = [a for a in chart.aspects if a.diff<10 and a.p1.i<10 and a.p2.i<10]
+    aspects = [a for a in chart.aspects if a.p1.i<10 and a.p2.i<10 and a.diff<a.aspect.orb]
     params = dict()
 
     asc = chart.asc
@@ -21,9 +23,9 @@ def user_profile_view(request, username):
         params.update(p.get_svg_params())
 
 
-
+    params['user'] = user
     params['chart'] = chart
-
+    params['houses'] = chart.houses
     params['planets'] = planets
     params['aspects'] = aspects
     params['action'] = '/chart/post'

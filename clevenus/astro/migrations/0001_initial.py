@@ -24,6 +24,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(unique=True, max_length=40)),
                 ('type', models.CharField(max_length=3, choices=[(b'con', b'Conjunction'), (b'sxt', b'Sextile'), (b'sqr', b'Square'), (b'tri', b'Trine'), (b'opp', b'Opposition')])),
                 ('degrees', models.IntegerField()),
+                ('orb', models.FloatField(default=0)),
                 ('slug', models.SlugField()),
             ],
             bases=('astro.interpretable',),
