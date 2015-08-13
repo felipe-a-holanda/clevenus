@@ -14,11 +14,12 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^i18n/', include('django.conf.urls.i18n')),
-    url('', include('social.apps.django_app.urls', namespace='social')),
+    #url('', include('social.apps.django_app.urls', namespace='social')),
     url(r'^accounts/login/$', 'django.contrib.auth.views.login', {'template_name': 'admin/login.html'}),
     url('^accounts/', include('django.contrib.auth.urls')),
-    url(r'^$', home),
+    url(r'^$', home, name='home'),
     url(r'^chart/', include(chart_urls)),
+
     url(r'^astro/', include(astro_urls)),
 
     url(r'^user/login/$', 'django.contrib.auth.views.login', {'template_name': 'users/login.html'}, name='user-login'),

@@ -2,6 +2,7 @@ from django.conf.urls import patterns, include, url
 from .views import *
 
 urlpatterns = patterns('',
+    url(r'search/$', search_view, name='search'),
     url(r'planet/(?P<planet>\w+)/$', planet_view, name='planet-view'),
     url(r'sign/(?P<sign>\w+)/$', sign_view, name='sign-view'),
     url(r'house/(?P<house>\w+)/$', house_view, name='house-view'),

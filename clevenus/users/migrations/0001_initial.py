@@ -23,7 +23,7 @@ class Migration(migrations.Migration):
                 ('time', models.TimeField(null=True, blank=True)),
                 ('datetime', models.DateTimeField(null=True)),
                 ('img', models.ImageField(null=True, upload_to=b'', blank=True)),
-                ('chart', models.OneToOneField(related_name='profile', null=True, to='charts.Chart')),
+                ('chart', models.OneToOneField(related_name='user', null=True, to='charts.Chart')),
                 ('city', models.ForeignKey(to='charts.City', null=True)),
                 ('user', models.OneToOneField(related_name='profile', to=settings.AUTH_USER_MODEL)),
             ],

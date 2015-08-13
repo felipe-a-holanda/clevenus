@@ -1,0 +1,12 @@
+
+{% extends 'base.html' %}
+{% block content %}
+    <p>Terms: {% for term in terms %} {{ term }} {% endfor %}</p>
+    <h4>Results</h4>
+
+    <ul>
+    {%  for o in objs %}
+        <li><a href="{{ o.url }}">{{ o }}</a></li>
+    {% endfor %}
+    </ul>
+{% endblock %}

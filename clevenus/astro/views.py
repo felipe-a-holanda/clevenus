@@ -1,19 +1,58 @@
+import operator
 from django.shortcuts import render, get_object_or_404
-
+from django.db.models import Q
 from .models import *
 from charts.views import chartNow
-from users.models import UserProfile
+import itertools
+from datetime import datetime
+from datetime import timedelta
+
 def home(request):
     return chartNow(request)
 
+def search_view(request):
+    terms = request.GET['search'].split()
+    q_list = [Q(iname__icontains=term) for term in terms]
+    query = reduce(operator.and_, q_list[1:], q_list[0])
+
+    objs = itertools.chain(*[Model.objects.filter(query) for Model in Sign, Planet, House, PlanetInSign, PlanetInHouse, HouseInSign, Aspect])
+    return render(request, 'astro/search.html', {'terms':terms, 'objs':objs})
 
 
 def planet_view(request, planet):
     planet = get_object_or_404(Planet, slug=planet.lower())
-    planet_in_signs = PlanetInSign.objects.filter(planet=planet).select_related('sign')
+    planet_in_signs = PlanetInSign.objects.filter(planet=planet).select_related('sign').prefetch_related('charts')
+    positions = list()
+    for d in planet.get_positions():
+
+        c = d['angle'] % 120
+        if 0 <= c <30:
+            d['color'] ='#ff0000'
+        if 30 <= c <60:
+            d['color'] ='#00ff00'
+        if 60 <= c <90:
+            d['color'] ='#ffff00'
+        if 90 <= c <120:
+            d['color'] ='#0000ff'
+        d['date'] = d['date'].strftime('%Y-%m-%d')
+        d['angle'] = d['angle']
+
+        positions.append(d)
+    #positions = [{'color':'#b7e021', 'date':d.strftime('%Y-%m-%d'), 'angle':int(a)} for d, a in planet.get_positions()]
+    #print positions
+
+
+    today = datetime.today()
+    period = timedelta(days=30)
+    start_date = today - period
+    end_date = today + period
+    format = "Date(%Y, %-m, %-d)"
     params = dict()
     params['planet'] = planet
     params['planet_in_signs'] = planet_in_signs
+    params['positions'] = positions
+    params['start_date'] = start_date.strftime(format)
+    params['end_date'] = end_date.strftime(format)
     return render(request, 'astro/planet_view.html', params)
 
 

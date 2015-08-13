@@ -8,19 +8,30 @@ from users.models import UserProfile
 from interpretations.models import Interpretation
 from interpretations.forms import InterpretationForm
 from datetime import datetime
+from django.utils import timezone
 
 from .utils import ChartCalc
-
+import pytz
 
 def chartNow(request):
-    now = datetime.now()
-    chart = ChartCalc(now, now.time())
+    now = datetime.utcnow().replace(tzinfo=timezone.utc)
+    return chartDate(request, now)
+
+def chartDate(request, date, time=None):
+    print date,time
+    date = datetime.strptime(date, '%Y-%m-%d').replace(tzinfo=timezone.utc)
+    if time:
+        time = datetime.strptime(time, "%H:%M").time()
+        date = datetime.combine(date, time).replace(tzinfo=timezone.utc)
+    else:
+        time = date.time()
+    chart = ChartCalc(date, time)
     planets = chart.planets
-    aspects = chart.aspects
     aspects = [a for a in chart.aspects if a.p1.i<10 and a.p2.i<10 and a.diff<a.aspect.orb]
     asc = chart.asc
     params = dict()
 
+    params['datetime'] = date
     params['asc'] = asc
     for p in chart.planets:
         params.update(p.get_svg_params())

@@ -1,32 +1,137 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
+{% load chart_tags %}
 {% block content %}
-    <div class="col-md-10 col-md-offset-1">
-        <h1>{{ planet }}</h1>
-    <script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization',
-       'version':'1','packages':['timeline']}]}"></script>
-<script type="text/javascript">
+<div class="col-md-10 col-md-offset-1">
+    <h1>{{ planet }}</h1>
+    <script type="text/javascript" src="{% static 'vendor/amcharts_3.15.2.free/amcharts/amcharts.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendor/amcharts_3.15.2.free/amcharts/serial.js' %}"></script>
 
-google.setOnLoadCallback(drawChart);
-function drawChart() {
-  var container = document.getElementById('example2.1');
-  var chart = new google.visualization.Timeline(container);
-  var dataTable = new google.visualization.DataTable();
+    <script type="text/javascript">
+            var chart = AmCharts.makeChart("chartdiv", {
+                "type": "serial",
+                "theme": "light",
+                "marginRight": 80,
+                "dataProvider": [
+                    {% for position in positions %}
+                        {
+                            "lineColor": "{{ position.color }}",
+                            "date": "{{ position.date }}",
+                            "angle": "{{ position.angle|stringformat:"f" }}",
 
-  dataTable.addColumn({ type: 'string', id: 'Term' });
-  dataTable.addColumn({ type: 'string', id: 'Name' });
-  dataTable.addColumn({ type: 'date', id: 'Start' });
-  dataTable.addColumn({ type: 'date', id: 'End' });
+                            "sign": "{{ position.sign }}",
+                        },
+                    {% endfor %}
+                ],
+                "balloon": {
+                    "cornerRadius": 6,
+                    "horizontalPadding": 15,
+                    "verticalPadding": 10
+                },
+                "graphs": [{
 
-  dataTable.addRows([
-    [ '<a href="www.google.com">1</a>', 'George Washington', new Date(1789, 3, 30), new Date(1797, 2, 4) ],
-    [ '2', 'John Adams',        new Date(1797, 2, 4),  new Date(1801, 2, 4) ],
-    [ '3', 'Thomas Jefferson',  new Date(1801, 2, 4),  new Date(1809, 2, 4) ]]);
+                    "bullet": "none",
+                    "bulletBorderAlpha": 1,
+                    "bulletBorderThickness": 1,
+                    "fillAlphas": 0.3,
+                    "fillColorsField": "lineColor",
+                    "legendValueText": "[[value]]",
+                    "lineColorField": "lineColor",
+                    "title": "angle",
+                    "valueField": "angle",
+                    "balloonText": "<div style='margin:10px; text-align:left'><span style='font-size:11px'>Degrees: [[angle]]</span><br><span style='font-size:11px'>Date: [[date]]</span><br><span style='font-size:18px'>Sign:[[sign]]</span></div>",
 
-  chart.draw(dataTable);
-}
-</script>
 
-<div id="example2.1" style="height: 200px;"></div>
+                }],
+                "chartScrollbar": {},
+                "chartCursor": {
+                    "categoryBalloonDateFormat": "YYYY MMM DD",
+                    "cursorAlpha": 0,
+                    "fullWidth": true
+                },
+                "dataDateFormat": "YYYY-MM-DD",
+                "categoryField": "date",
+                "categoryAxis": {
+                    "dateFormats": [{
+                        "period": "DD",
+                        "format": "DD"
+                    }, {
+                        "period": "WW",
+                        "format": "MMM DD"
+                    }, {
+                        "period": "MM",
+                        "format": "MMM"
+                    }, {
+                        "period": "YYYY",
+                        "format": "YYYY"
+                    }],
+                    "parseDates": true,
+                    "autoGridCount": false,
+                    "axisColor": "#555555",
+                    "gridAlpha": 0.1,
+                    "gridCount": 14,
+                    "guides":[
+                        {
+                            category: "2015-8-22",
+                            toCategory: "2015-9-11",
+                            lineColor: "#CC0000",
+                            lineAlpha: 1,
+                            fillAlpha: 0.2,
+                            fillColor: "#CC0000",
+                            dashLength: 2,
+                            inside: true,
+                            labelRotation: 90,
+                            label: "fines for speeding increased"
+                        }
+                    ]
+                },
+                "valueAxes": [
+                    {
+                        "title": "Longitude",
+                        "labelFrequency": 1,
+                        "gridAlpha": 0.15,
+                        "autoGridCount":false,
+                        "gridCount":0,
+                        "minimum":0,
+                        "maximum":360,
+                        "labelOffset": 30,
+                        "minVerticalGap": 20,
+                        "minMaxMultiplier":1.2,
+
+                        "guides": [
+
+                            {% for sign in signs %}
+                                {
+                                "label": "{{ sign.name }}",
+                                "fillAlpha": 0.10,
+                                "value": {{ sign.start_angle }},
+                                "toValue": {{ sign.end_angle }}
+                            },
+                            {% endfor %}
+
+
+                        ]
+
+                    }
+                ],
+                "export": {
+                    "enabled": true
+                },
+
+            });
+
+
+            chart.addListener("dataUpdated", zoomChart);
+
+            function zoomChart() {
+                chart.zoomToDates(new Date(2015, 6, 12), new Date(2015, 9, 12));
+            }
+
+
+
+    </script>
+
+    <div id="chartdiv" style="height: 400px;"></div>
 
     <table class="table">
         <thead>
@@ -38,12 +143,12 @@ function drawChart() {
         </thead>
         <tbody>
         {% for sign in planet_in_signs %}
-            <tr>
+        <tr>
             <td><a href="{% url 'planet-in-sign' planet.slug sign.sign.slug %}">{{ sign }}</a></td>
             <td>{{ sign.charts.all|length }}</td>
-            </tr>
+        </tr>
         {% endfor %}
         </tbody>
     </table>
-    </div>
+</div>
 {% endblock %}

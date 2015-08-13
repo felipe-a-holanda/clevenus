@@ -51,6 +51,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
+    'request',
+    #'easy_timezones',
+
     'astro',
     'charts',
     'interpretations',
@@ -66,6 +69,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'request.middleware.RequestMiddleware',
+    #'easy_timezones.middleware.EasyTimezoneMiddleware',
 
 )
 
@@ -89,6 +95,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
     'django.core.context_processors.request',
+    'astro.utils.default_context_processor'
 
 )
 TEMPLATE_DIRS = [ROOT_DIR('templates'), ]
@@ -119,11 +126,15 @@ LANGUAGES = (
 )
 
 
-LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
+#LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
+#TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
+
+GEOIP_DATABASE = ROOT_DIR('static/geoip/database/GeoLiteCity.dat')
 
 LOCALE_PATHS = (
     ROOT_DIR('config/locale/'),

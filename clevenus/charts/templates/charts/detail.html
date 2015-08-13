@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load chart_tags %}
+{% load tz %}
 
 
 {% block content %}
@@ -9,6 +10,13 @@
 
     </div>
     <div class="row row-centered">
+        
+
+    <div class="col-xs-3 col-centered"><p>The UTC time is  {{ datetime }} {{ datetime.tzinfo }}</p></div>
+    {% localtime on %}
+    <div class="col-xs-3 col-centered"><p>The local time is {{ datetime }} {{ datetime.tzinfo }}</p></div>
+    {% endlocaltime %}
+        <div class="col-xs-3 col-centered"><p>{{ datetime }} {{ datetime.tzinfo }}</p></div>
         {% if chart.time %}
             <div class="col-xs-3 col-centered"><p>{{ chart.datetime }} {{ chart.datetime.tzinfo }}</p></div>
         {% else %}

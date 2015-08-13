@@ -1,11 +1,17 @@
 from django.db import models
 from django.utils.text import slugify
 # Create your models here.
-
+from django.core.urlresolvers import reverse
+from .utils import calc_position
+from datetime import datetime, timedelta
 
 
 class Interpretable(models.Model):
     iname = models.CharField(max_length=20, unique=True)
+
+    @property
+    def url(self):
+        return self.get_absolute_url()
 
     def __unicode__(self):
         return self.iname
@@ -16,6 +22,17 @@ class Sign(Interpretable):
     name = models.CharField(max_length=20, unique=True)
     code = models.CharField(max_length=20, unique=True)
     slug = models.SlugField()
+
+    def get_absolute_url(self):
+        return reverse('sign-view', args=[str(self.slug)])
+
+    @property
+    def start_angle(self):
+        return self.index*30
+
+    @property
+    def end_angle(self):
+        return (self.index+1)*30
 
     def __unicode__(self):
         return self.name
@@ -35,6 +52,8 @@ class Planet(Interpretable):
     code = models.CharField(max_length=20, unique=True)
     slug = models.SlugField()
 
+    def get_absolute_url(self):
+        return reverse('planet-view', args=[str(self.slug)])
 
     def __unicode__(self):
         return self.name
@@ -47,12 +66,29 @@ class Planet(Interpretable):
         self.slug = slugify(self.name)
         super(Planet, self).save(*args, **kwargs)
 
+    def get_positions(self):
+        from charts.utils import CONSTS
+        base = datetime.today()
+        date_list = [base + timedelta(days=x) for x in range(-180, 365)]
+        positions = []
+        for date in date_list:
+            angle = calc_position(date, self.index)
+            sign = CONSTS.signs[int(angle/30)]
+            d = {'date':date, 'angle':angle, 'sign':sign}
+            positions.append(d)
+
+        return positions
+
+
 
 class House(Interpretable):
     index = models.IntegerField(unique=True)
     name = models.CharField(max_length=20, unique=True)
     code = models.CharField(max_length=20, unique=True)
     slug = models.SlugField()
+
+    def get_absolute_url(self):
+        return reverse('house-view', args=[str(self.slug)])
 
 
     def __unicode__(self):
@@ -73,6 +109,11 @@ class PlanetInSign(Interpretable):
     sign = models.ForeignKey(Sign)
     code = models.CharField(max_length=40, unique=True)
     slug = models.SlugField()
+    planet_slug = models.SlugField()
+    sign_slug = models.SlugField()
+
+    def get_absolute_url(self):
+        return reverse('planet-in-sign', args=[self.planet_slug, self.sign_slug])
 
     def __unicode__(self):
         return self.name
@@ -81,6 +122,8 @@ class PlanetInSign(Interpretable):
         self.name = "%s in %s" % (self.planet.name, self.sign.name)
         self.iname = self.name
         self.slug = slugify(self.name)
+        self.planet_slug = self.planet.slug
+        self.sign_slug = self.sign.slug
         self.code = self.slug
         super(PlanetInSign, self).save(*args, **kwargs)
 
@@ -89,6 +132,11 @@ class HouseInSign(Interpretable):
     house = models.ForeignKey(House)
     sign = models.ForeignKey(Sign)
     slug = models.SlugField()
+    house_slug = models.SlugField()
+    sign_slug = models.SlugField()
+
+    def get_absolute_url(self):
+        return reverse('house-in-sign', args=[self.house_slug, self.sign_slug])
 
     def __unicode__(self):
         return self.name
@@ -97,6 +145,8 @@ class HouseInSign(Interpretable):
         self.name = "%s in %s" % (self.house.name, self.sign.name)
         self.iname = self.name
         self.slug = slugify(self.name)
+        self.sign_slug = self.sign.slug
+        self.house_slug = self.house.slug
         self.code = self.slug
         super(HouseInSign, self).save(*args, **kwargs)
 
@@ -106,6 +156,12 @@ class PlanetInHouse(Interpretable):
     planet = models.ForeignKey(Planet)
     house = models.ForeignKey(House)
     slug = models.SlugField()
+    planet_slug = models.SlugField()
+    house_slug = models.SlugField()
+
+
+    def get_absolute_url(self):
+        return reverse('planet-in-house', args=[self.planet_slug, self.house_slug])
 
     def __unicode__(self):
         return self.name
@@ -114,6 +170,8 @@ class PlanetInHouse(Interpretable):
         self.name = "%s in %s house" % (self.planet.name, self.house.name)
         self.iname = self.name
         self.slug = slugify(self.name)
+        self.planet_slug = self.planet.slug
+        self.house_slug = self.house.slug
         self.code = self.slug
         super(PlanetInHouse, self).save(*args, **kwargs)
 
@@ -134,6 +192,12 @@ class Aspect(Interpretable):
     p2 = models.ForeignKey(Planet, verbose_name='Second Planet', related_name='aspects_second')
     slug = models.SlugField()
 
+    p1_slug = models.SlugField()
+    p2_slug = models.SlugField()
+
+    def get_absolute_url(self):
+        return reverse('aspect', args=[self.p1_slug, self.type, self.p2_slug])
+
     def __unicode__(self):
         return self.name
 
@@ -148,4 +212,6 @@ class Aspect(Interpretable):
         self.iname = self.name
         self.slug = slugify(self.name)
         self.code = self.slug
+        self.p1_slug = self.p1.slug
+        self.p2_slug = self.p2.slug
         super(Aspect, self).save(*args, **kwargs)
