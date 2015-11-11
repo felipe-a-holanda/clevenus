@@ -17,6 +17,50 @@ from .utils import ChartCalc, CONSTS
 
 
 
+class Event(models.Model):
+    name = models.CharField(max_length=512)
+    datetime = models.DateTimeField()
+    known_time = models.BooleanField()
+    city = models.ForeignKey('City')
+    chart = models.ForeignKey('Chart', null=True)
+
+    def __str__(self):
+        return "%s %s %s" % (self.name, self.datetime, self.city)
+
+    @classmethod
+    def create(cls, name, city_name, event_date, event_time=None):
+        print(cls)
+        self = cls()
+        self.name = name
+        if event_date and event_time:
+            self.datetime = datetime.combine(event_date, event_time)
+            self.known_time = True
+        elif event_date:
+            self.datetime = datetime.combine(event_date, time(12, 0))
+            self.known_time = False
+        self.city = City.create(city_name)
+
+        if self.city:
+
+            self.datetime = self.city.timezone.localize(self.datetime)
+            print("localized", self.datetime.__repr__())
+        else:
+
+            self.datetime = pytz.utc.localize(self.datetime)
+            print("not localized", self.datetime.__repr__())
+
+        self.chart = Chart.create(self.name, self.datetime.date(), self.datetime.time(), self.city)
+        self.save()
+        return self
+
+
+    #def save(self, *args, **kwargs):
+    #    super(BaseEvent, self).save(*args, **kwargs)
+
+
+
+
+
 class City(models.Model):
     name = models.CharField(max_length=512)
     city = models.CharField(max_length=512)
@@ -24,7 +68,7 @@ class City(models.Model):
     country = models.CharField(max_length=512)
     lat = models.FloatField()
     lng = models.FloatField()
-    timezone = TimeZoneField()
+    timezone = TimeZoneField(null=True)
 
     @classmethod
     def create(cls, city_name):
@@ -37,7 +81,7 @@ class City(models.Model):
             city.save()
             return city
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     def save(self, *args, **kwargs):
@@ -45,7 +89,18 @@ class City(models.Model):
         super(City, self).save(*args, **kwargs)
 
     def geocode(self):
-        g = geocoder.google(self.name)
+        from time import sleep
+        counts = 0
+        while True:
+            try:
+                g = geocoder.google(self.name)
+            except:
+                sleep(0.5)
+                counts += 1
+                if counts > 3:
+                    raise
+            else:
+                break
 
 
         if g.ok:
@@ -58,7 +113,7 @@ class City(models.Model):
             t = geopy.GoogleV3()
             self.timezone = t.timezone((self.lat, self.lng))
         else:
-            print self.name, g
+            print(self.name, g)
 
 
 
@@ -70,7 +125,7 @@ class ChartAspect(models.Model):
     exact = models.FloatField()
     diff = models.FloatField()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     def save(self, *args, **kwargs):
@@ -81,7 +136,6 @@ class ChartAspect(models.Model):
 
 
 class Chart(models.Model):
-    #user = models.ForeignKey(UserProfile, related_name='charts')
     name = models.CharField(max_length=256)
     date = models.DateField()
     time = models.TimeField(null=True, blank=True)
@@ -137,16 +191,20 @@ class Chart(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     def __cmp__(self, other):
         return cmp(self.name, other.name)
 
+    def __lt__(self, other):
+        return self.name < other.name
+
     @classmethod
     def create(cls, name, date, time=None, city=None):
         chart = Chart(name=name, date=date, time=time, city=city)
         chart.save()
+        print("chart created %s" % chart)
         return chart
 
 
@@ -164,7 +222,7 @@ class Chart(models.Model):
             setattr(self, p.code, p.x)
         if self.chart_calc.houses:
             for i, h in enumerate(self.chart_calc.houses):
-                setattr(self, 'house_%d' % i, h.angle)
+                setattr(self, 'house_%d' % (i+1), h.angle)
 
 
     def create_relations(self):

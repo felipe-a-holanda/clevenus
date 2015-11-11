@@ -34,8 +34,6 @@ SECRET_KEY = 'dt9u2xahh&cba_897gqfiyhc-=3f-^^lz-n2#qhg44_025ir-f'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
-
 ALLOWED_HOSTS = []
 
 SITE_ID = 1
@@ -51,8 +49,14 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
     'request',
-    #'easy_timezones',
+    'bootstrap3',
+    'cities_light',
+    'autocomplete_light',
 
     'astro',
     'charts',
@@ -61,6 +65,9 @@ INSTALLED_APPS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'request.middleware.RequestMiddleware',
+    #'django.middleware.gzip.GZipMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -69,36 +76,56 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
 
-    'request.middleware.RequestMiddleware',
     #'easy_timezones.middleware.EasyTimezoneMiddleware',
 
 )
 
-ROOT_URLCONF = 'config.urls'
-
-#Django allauth
 AUTHENTICATION_BACKENDS = (
-    # Needed to login by username in Django admin, regardless of `allauth`
-    "django.contrib.auth.backends.ModelBackend",
+    'django.contrib.auth.backends.ModelBackend',
+    "allauth.account.auth_backends.AuthenticationBackend",
 )
 
 LOGIN_REDIRECT_URL = '/'
+SOCIALACCOUNT_QUERY_EMAIL = True
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        #'SCOPE': ['email', 'user_friends', 'user_birthday', 'user_hometown'],
+        'SCOPE': ['email', 'user_friends'],
+        'METHOD': 'js_sdk'  # instead of 'oauth2'
+    }
+}
 
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.contrib.auth.context_processors.auth",
-    "django.core.context_processors.debug",
-    "django.core.context_processors.i18n",
-    "django.core.context_processors.media",
-    "django.core.context_processors.static",
-    "django.core.context_processors.tz",
-    "django.contrib.messages.context_processors.messages",
-    'django.core.context_processors.request',
-    'astro.utils.default_context_processor'
 
-)
-TEMPLATE_DIRS = [ROOT_DIR('templates'), ]
+ROOT_URLCONF = 'config.urls'
+
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [ROOT_DIR('templates'), ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+				"django.contrib.auth.context_processors.auth",
+				"django.core.context_processors.debug",
+				"django.core.context_processors.i18n",
+				"django.core.context_processors.media",
+				"django.core.context_processors.static",
+				"django.core.context_processors.tz",
+				"django.contrib.messages.context_processors.messages",
+				'django.core.context_processors.request',
+				'astro.utils.default_context_processor',
+			],
+        },
+    },
+]
+
+
+
+
 
 
 WSGI_APPLICATION = 'config.wsgi.application'
@@ -140,6 +167,9 @@ LOCALE_PATHS = (
     ROOT_DIR('config/locale/'),
 )
 
+DATE_FORMAT = 'Y-m-d'
+TIME_FORMAT = 'H:M:S'
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
@@ -156,4 +186,6 @@ MEDIA_ROOT = ROOT_DIR('media')
 MEDIA_URL = '/media/'
 
 
-
+#CITIES_LIGHT_CITY_SOURCES = ['http://download.geonames.org/export/dump/cities1000.zip']
+CITIES_LIGHT_TRANSLATION_LANGUAGES = ['es', 'en', 'pt', 'abbr']
+CITIES_LIGHT_INCLUDE_COUNTRIES = ['BR']

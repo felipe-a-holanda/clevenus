@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Jupiter x Venus</title>
+    <link href="{{ url_for('static', filename='main.css') }}" rel="stylesheet" media="all">
+    
+    
+    <script src="{{ url_for('static', filename='amcharts/amcharts.js') }}"></script>
+    <script src="{{ url_for('static', filename='amcharts/serial.js') }}"></script>
+    <script src="{{ url_for('static', filename='amcharts/themes/light.js') }}"></script>
+    <script src="{{ url_for('static', filename='amcharts/plugins/dataloader/dataloader.min.js') }}"></script>
+    
+
+</head>
+<body>
+    <div id="chartdiv"></div>
+    <a name="raptors">Raptors</a>
+    <script>
+        {% include 'chart_planet.js' %}
+    </script>
+</body>
+</html>

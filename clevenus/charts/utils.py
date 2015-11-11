@@ -7,6 +7,12 @@ swe.set_ephe_path('/usr/share/libswe/ephe/')
 
 from astro.models import Planet, House, Aspect, Sign, PlanetInSign, PlanetInHouse, HouseInSign
 
+
+CHART_CENTER = 300
+PLANET_RADIUS = 220
+INNER_RADIUS = 200
+
+
 class cached_property(object):
     """
     Descriptor (non-data) for building an attribute on-demand on first use.
@@ -97,25 +103,25 @@ class PlanetPosition(object):
                 if house_cusps[i] < angle <= house_cusps[(i+1) % 12]:
                     return i
 
-    def get_x(self, planet_radius=220, chart_center_x=300):
+    def get_x(self, planet_radius=PLANET_RADIUS, chart_center_x=CHART_CENTER):
         x = cos((self.x + 180 - self.asc) * pi / 180.0) * planet_radius + chart_center_x
         return x
 
-    def get_y(self, planet_radius=220, chart_center_y=300):
+    def get_y(self, planet_radius=PLANET_RADIUS, chart_center_y=CHART_CENTER):
         y = -sin((self.x + 180 - self.asc) * pi / 180.0) * planet_radius + chart_center_y
         return y
 
     def get_x_aspect(self):
-        return self.get_x(planet_radius=200)
+        return self.get_x(planet_radius=INNER_RADIUS)
 
     def get_y_aspect(self):
-        return self.get_y(planet_radius=200)
+        return self.get_y(planet_radius=INNER_RADIUS)
 
-    def get_svg_params(self, planet_radius=220, planet_size=7, planet_circle=10):
+    def get_svg_params(self, planet_radius=PLANET_RADIUS, planet_size=7, planet_circle=10):
         params = dict()
         planet_scale = planet_size * 2 / 100.0
-        chart_center_x = 300
-        chart_center_y = 300
+        chart_center_x = CHART_CENTER
+        chart_center_y = CHART_CENTER
         p_x = self.get_x(planet_radius, chart_center_x)
         p_y = self.get_y(planet_radius, chart_center_y)
 
@@ -131,11 +137,28 @@ class PlanetPosition(object):
         return params
 
 class HouseCusp(object):
-    def __init__(self, i, angle):
+    def __init__(self, i, angle, asc):
         self.i = i
+        self.index = i+1
+        self.asc = asc
         self.angle = angle
         self.house = CONSTS.houses[i]
         self.house_in_sign = CONSTS.house_in_signs[(i, int(angle/30))]
+
+    def get_x(self, planet_radius=PLANET_RADIUS, chart_center_x=CHART_CENTER):
+        x = cos((self.angle + 180 - self.asc) * pi / 180.0) * planet_radius + chart_center_x
+        return x
+
+    def get_y(self, planet_radius=PLANET_RADIUS, chart_center_y=CHART_CENTER):
+        y = -sin((self.angle + 180 - self.asc) * pi / 180.0) * planet_radius + chart_center_y
+        return y
+
+    def get_svg(self):
+        self.x1 = self.get_x(100)
+        self.y1 = self.get_y(100)
+        self.x2 = self.get_x(300)
+        self.y2 = self.get_y(300)
+        return '<svg class="svg_house"> <line id="house_{h.index}" x1="{h.x1}" y1="{h.y1}" x2="{h.x2}" y2="{h.y2}" style="stroke:rgb(0,0,0);stroke-width:1"> </line></svg>'.format(h=self)
 
 
 
@@ -231,7 +254,7 @@ class ChartCalc(object):
         house_cusps = swe.houses(self.j, self.lat, self.lng)[0]
         houses = []
         for i, cusp in enumerate(house_cusps):
-            houses.append(HouseCusp(i, cusp))
+            houses.append(HouseCusp(i, cusp, house_cusps[0]))
         return houses
 
     def calc_aspects(self, positions):

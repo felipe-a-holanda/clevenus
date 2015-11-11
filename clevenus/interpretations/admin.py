@@ -1,4 +1,4 @@
 from django.contrib import admin
 
 from .models import *
-admin.site.register(Interpretation)
+admin.site.register(GenericInterpretation)

@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load chart_tags %}
+{% block content %}
+<div class="col-md-10 col-md-offset-1">
+    <h1>Transits for {{ userprofile }}</h1>
+    <script type="text/javascript" src="{% static 'vendor/amcharts_3.15.2.free/amcharts/amcharts.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendor/amcharts_3.15.2.free/amcharts/serial.js' %}"></script>
+
+    <script type="text/javascript">
+            var chart = AmCharts.makeChart("chartdiv", {
+                "type": "serial",
+                "theme": "light",
+                "marginRight": 80,
+                "dataProvider": [
+                    {% for position in positions %}
+                        {
+                            "lineColor": "{{ position.color }}",
+                            "date": "{{ position.date }}",
+                            "angle": "{{ position.angle|stringformat:"f" }}",
+
+                            "sign": "{{ position.sign }}",
+                        },
+                    {% endfor %}
+                ],
+                "balloon": {
+                    "cornerRadius": 6,
+                    "horizontalPadding": 15,
+                    "verticalPadding": 10
+                },
+                "graphs": [{
+
+                    "bullet": "none",
+                    "bulletBorderAlpha": 1,
+                    "bulletBorderThickness": 1,
+                    "fillAlphas": 0.3,
+                    "fillColorsField": "lineColor",
+                    "legendValueText": "[[value]]",
+                    "lineColorField": "lineColor",
+                    "title": "angle",
+                    "valueField": "angle",
+                    "balloonText": "<div style='margin:10px; text-align:left'><span style='font-size:11px'>Degrees: [[angle]]</span><br><span style='font-size:11px'>Date: [[date]]</span><br><span style='font-size:18px'>Sign:[[sign]]</span></div>",
+
+
+                }],
+                "chartScrollbar": {},
+                "chartCursor": {
+                    "categoryBalloonDateFormat": "YYYY MMM DD",
+                    "cursorAlpha": 0,
+                    "fullWidth": true
+                },
+                "dataDateFormat": "YYYY-MM-DD",
+                "categoryField": "date",
+                "categoryAxis": {
+                    "dateFormats": [{
+                        "period": "DD",
+                        "format": "DD"
+                    }, {
+                        "period": "WW",
+                        "format": "MMM DD"
+                    }, {
+                        "period": "MM",
+                        "format": "MMM"
+                    }, {
+                        "period": "YYYY",
+                        "format": "YYYY"
+                    }],
+                    "parseDates": true,
+                    "autoGridCount": false,
+                    "axisColor": "#555555",
+                    "gridAlpha": 0.1,
+                    "gridCount": 1,
+                    "guides":[
+                        {
+                            category: "2015-11-6",
+                            toCategory: "2015-11-7",
+                            lineColor: "#CC0000",
+                            lineAlpha: 1,
+                            fillAlpha: 0.2,
+                            fillColor: "#CC0000",
+                            dashLength: 2,
+                            inside: true,
+                            labelRotation: 90,
+                            label: "fines for speeding increased"
+                        }
+                    ]
+                },
+                "valueAxes": [
+                    {
+                        "title": "Longitude",
+                        "labelFrequency": 1,
+                        "gridAlpha": 0.15,
+                        "autoGridCount":true,
+                        "gridCount":1,
+                        "minimum":0,
+                        "maximum":1,
+                        "labelOffset": 30,
+                        "minVerticalGap": 20,
+                        "minMaxMultiplier":1.2,
+
+
+                    }
+                ],
+                "export": {
+                    "enabled": true
+                },
+
+            });
+
+
+            chart.addListener("dataUpdated", zoomChart);
+
+            function zoomChart() {
+                chart.zoomToDates(new Date(2015, 6, 12), new Date(2015, 12, 12));
+            }
+
+
+
+    </script>
+
+    <div id="chartdiv" style="height: 400px;"></div>
+
+</div>
+{% endblock %}

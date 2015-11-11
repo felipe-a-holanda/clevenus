@@ -586,18 +586,12 @@
     {% for aspect in aspects %}
     {{ aspect.get_svg|safe }}{% endfor %}
  </svg>
+ {% if houses %}
  <svg id="svg_houses">
-  <svg class="svg_house"> <line id="house_1" x1="0" y1="0" x2="0" y2="0" style="stroke:rgb(0,0,0);stroke-width:1"> </line></svg>
-  <svg class="svg_house"> <line id="house_2" x1="0" y1="0" x2="0" y2="0" style="stroke:rgb(0,0,0);stroke-width:1"> </line></svg>
-  <svg class="svg_house"> <line id="house_3" x1="0" y1="0" x2="0" y2="0" style="stroke:rgb(0,0,0);stroke-width:1"> </line></svg>
-  <svg class="svg_house"> <line id="house_4" x1="0" y1="0" x2="0" y2="0" style="stroke:rgb(0,0,0);stroke-width:1"> </line></svg>
-  <svg class="svg_house"> <line id="house_5" x1="0" y1="0" x2="0" y2="0" style="stroke:rgb(0,0,0);stroke-width:1"> </line></svg>
-  <svg class="svg_house"> <line id="house_6" x1="0" y1="0" x2="0" y2="0" style="stroke:rgb(0,0,0);stroke-width:1"> </line></svg>
-  <svg class="svg_house"> <line id="house_7" x1="0" y1="0" x2="0" y2="0" style="stroke:rgb(0,0,0);stroke-width:1"> </line></svg>
-  <svg class="svg_house"> <line id="house_8" x1="0" y1="0" x2="0" y2="0" style="stroke:rgb(0,0,0);stroke-width:1"> </line></svg>
-  <svg class="svg_house"> <line id="house_9" x1="0" y1="0" x2="0" y2="0" style="stroke:rgb(0,0,0);stroke-width:1"> </line></svg>
-  <svg class="svg_house"> <line id="house_10" x1="0" y1="0" x2="0" y2="0" style="stroke:rgb(0,0,0);stroke-width:1"> </line></svg>
-  <svg class="svg_house"> <line id="house_11" x1="0" y1="0" x2="0" y2="0" style="stroke:rgb(0,0,0);stroke-width:1"> </line></svg>
-  <svg class="svg_house"> <line id="house_12" x1="0" y1="0" x2="0" y2="0" style="stroke:rgb(0,0,0);stroke-width:1"> </line></svg>
+ {% for house in houses %}
+ {{ house.get_svg|safe }}
+ {% endfor %}
+ <circle cx="300" cy="300" r="100" fill="none" stroke="black" stroke-width="1"></circle>
  </svg>
+ {% endif %}
 </svg>

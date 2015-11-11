@@ -1,0 +1,12 @@
+build-essential
+gettext
+python-dev
+python-pip
+python-virtualenv
+swe-basic-data
+swe-standard-data
+libffi-dev
+libssl-dev 
+libjpeg-dev 
+libfreetype6-dev 
+zlib1g-dev

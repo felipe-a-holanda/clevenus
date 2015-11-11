@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load chart_tags %}
+{% block content %}
+    <div class="col-md-8">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Asc</th>
+                <th>Sun</th>
+                <th>Moon</th>
+                <th>Date</th>
+                <th>City</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+        {% for event in object_list %}
+            <tr>
+                <td><a href="{% url 'chart-view' event.chart.pk %}">{{ event.name }}</a></td>
+                <td><img src="{{ event.chart.house_1|sign_img }}" width="32" height="32"></td>
+                <td><img src="{{ event.chart.sun|sign_img }}" width="32" height="32"></td>
+                <td><img src="{{ event.chart.moon|sign_img }}" width="32" height="32"></td>
+                <td>{{ event.datetime }}</td>
+                <td>{{ event.city }}</td>
+
+
+            </tr>
+
+        {% endfor %}
+            </tbody>
+            </table>
+
+    </div>
+{% endblock %}

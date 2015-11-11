@@ -1,24 +1,27 @@
 {% extends 'base.html' %}
 {% load chart_tags %}
 {% load tz %}
+{% load account %}
+{% load socialaccount %}
 
 
 {% block content %}
+
     <div class="container">
+
+
+        <a href="{% provider_login_url 'facebook' method='js_sdk' %}">Facebook Connect</a>
     <div class="row row-centered">
         <div class="col-xs-3 col-centered"><p>{{ user.name }}</p></div>
 
     </div>
     <div class="row row-centered">
-        
+        <p>{{ chart.name }}</p>
+        <p>{{chart.datetime }}</p>
+        <p>{{chart.city}}</p>
 
-    <div class="col-xs-3 col-centered"><p>The UTC time is  {{ datetime }} {{ datetime.tzinfo }}</p></div>
-    {% localtime on %}
-    <div class="col-xs-3 col-centered"><p>The local time is {{ datetime }} {{ datetime.tzinfo }}</p></div>
-    {% endlocaltime %}
-        <div class="col-xs-3 col-centered"><p>{{ datetime }} {{ datetime.tzinfo }}</p></div>
         {% if chart.time %}
-            <div class="col-xs-3 col-centered"><p>{{ chart.datetime }} {{ chart.datetime.tzinfo }}</p></div>
+            <div class="col-xs-3 col-centered"><p>{{ datetime }}</p></div>
         {% else %}
             <div class="col-xs-3 col-centered"><p>{{ chart.datetime.date }}</p></div>
         {% endif %}
@@ -29,6 +32,8 @@
         <div class="col-xs-6 col-centered" >
             {% include 'charts/chart.svg' %}
         </div>
+
+
     </div>
 </div>
 
@@ -52,10 +57,10 @@
                 <tbody>
                 {% for planet in planets %}
                     <tr>
-                        <td>{{ planet.angle|dms }}</td>
+                        <td>{{ planet.angle|mod30|dms }}</td>
                         <td>
                             <a href="{% url 'planet-in-sign' planet.planet.slug planet.sign.slug %}">{{ planet.planet.name }}
-                                in {{ planet.sign }}</a></td>
+                                in {{ planet.sign }}</a> ({{ planet.angle|mod30|dms }})</td>
                         {% if houses %}
                         <td>
                             <a href="{% url 'planet-in-house' planet.planet.slug planet.house.house.slug %}">{{ planet.planet.name }}
@@ -95,4 +100,27 @@
 
 
 
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+function go_to_date(){
+date = $('#datepicker').val();
+time = $('#timepicker').val();
+window.location.href ='/chart/date/'+date+'/'+time+'/';
+
+}
+    $('#datepicker').datepicker({
+        format: "yyyy-mm-dd",
+        startView: 2,
+        todayBtn: "linked",
+        language: "pt-BR",
+        autoclose: true,
+        todayHighlight: true,
+        defaultViewDate: { year: 1986, month: 12, day: 22 }
+    });
+
+
+</script>
 {% endblock %}

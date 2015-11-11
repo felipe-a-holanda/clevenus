@@ -1,0 +1,11 @@
+<h1>Interpretations</h1>
+<ul>
+    {% for interpretation in object_list %}
+    <li>{{ interpretation }}  :
+    <a href="{% url "interpretation_edit" interpretation.id %}">{{ interpretation }}</a>
+    <a href="{% url "interpretation_delete" interpretation.id %}">delete</a>
+    </li>
+    {% endfor %}
+</ul>
+
+<a href="{% url "interpretation_new" %}">New</a>

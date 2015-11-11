@@ -1,7 +1,25 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
+{% block  head %}
+    <link href="{% static 'clevenus/chart_aspect.css' %}" rel="stylesheet" media="all">
+    <script src="{% static 'vendor/amcharts/amcharts.js' %}"></script>
+    <script src="{% static 'vendor/amcharts/amcharts.js' %}"></script>
+    <script src="{% static 'vendor/amcharts/serial.js' %}"></script>
+    <script src="{% static 'vendor/amcharts/themes/light.js' %}"></script>
+    <script src="{% static 'vendor/amcharts/plugins/dataloader/dataloader.min.js' %}"></script>
+{% endblock %}
+
 {% block content %}
     <div class="col-md-10 col-md-offset-1">
     <h1><a href="{% url 'planet-view' aspect.p1.slug %}">{{ aspect.p1 }}</a> {{ aspect.type_verbose }} <a href="{% url 'planet-view' aspect.p2.slug %}">{{ aspect.p2 }}</a></h1>
+        <div id="chartdiv"></div>
+
     {% include 'astro/user_grid.html' %}
     </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        {% include 'astro/aspect.js' %}
+    </script>
 {% endblock %}

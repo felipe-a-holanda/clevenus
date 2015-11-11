@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% load chart_tags %}
+{% load tz %}
+{% load account %}
+{% load socialaccount %}
+
+
+{% block content %}
+
+    <div class="container">
+
+
+        <a href="{% provider_login_url 'facebook' method='js_sdk' %}">Facebook Connect</a>
+    <div class="row row-centered">
+        <div class="col-xs-3 col-centered"><p>{{ user.name }}</p></div>
+
+    </div>
+    <div class="row row-centered">
+
+
+
+
+        bilu
+        {% if chart.time %}
+            <div class="col-xs-3 col-centered"><p>{{ datetime }}</p></div>
+        {% else %}
+            <div class="col-xs-3 col-centered"><p>{{ chart.datetime.date }}</p></div>
+        {% endif %}
+    </div>
+
+    <div class="row row-centered">
+
+        <div class="col-xs-6 col-centered" >
+            {% include 'charts/chart.svg' %}
+        </div>
+
+        <table class="table table-nonfluid">
+            <tr><td><input id="datepicker" class="input" value="{{ datetime_utc|date:'Y-m-d' }}"></td><td><input id="timepicker" class="input" value="{{ datetime_utc|date:'H:i' }}"></td><td><a onclick="javascript:go_to_date();" >Ir</a></td></tr>
+            <tr><td></td><td><a href="{% url 'chart_datetime' datetime_now_utc|date:'Y-m-d/H:i' %}">Hoje</a></td><td></td></tr>
+            <tr><td><a href="{{ url_minus_minute }}">-1</a></td><td>Minuto</td><td><a href="{{ url_plus_minute }}">+1</a></td></tr>
+            <tr><td><a href="{{ url_minus_hour }}">-1</a></td><td>Hora</td><td><a href="{{ url_plus_hour }}">+1</a></td></tr>
+            <tr><td><a href="{{ url_minus_day }}">-1</a></td><td>Dia</td><td><a href="{{ url_plus_day }}">+1</a></td></tr>
+            <tr><td><a href="{{ url_minus_week }}">-1</a></td><td>Semana</td><td><a href="{{ url_plus_week }}">+1</a></td></tr>
+            <tr><td><a href="{{ url_minus_month }}">-1</a></td><td>Mês</td><td><a href="{{ url_plus_month }}">+1</a></td></tr>
+            <tr><td><a href="{{ url_minus_year }}">-1</a></td><td>Ano</td><td><a href="{{ url_plus_year }}">+1</a></td></tr>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-1">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th >Position</th>
+                    <th>In Sign</th>
+                    {% if houses %}
+                    <th>In House</th>
+                    {% endif %}
+                </tr>
+                </thead>
+                <tbody>
+                {% for planet in planets %}
+                    <tr>
+                        <td>{{ planet.angle|mod30|dms }}</td>
+                        <td>
+                            <a href="{% url 'planet-in-sign' planet.planet.slug planet.sign.slug %}">{{ planet.planet.name }}
+                                in {{ planet.sign }}</a> ({{ planet.angle|mod30|dms }})</td>
+                        {% if houses %}
+                        <td>
+                            <a href="{% url 'planet-in-house' planet.planet.slug planet.house.house.slug %}">{{ planet.planet.name }}
+                                in {{ planet.house.house }}</a></td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-1">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th data-sortable="true">Aspect</th>
+                    <th data-sortable="true">Orb</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for aspect in aspects %}
+                    <tr>
+                        <td>
+                            <a href="{% url 'aspect' aspect.p1.planet.slug aspect.aspect.type aspect.p2.planet.slug %}">{{ aspect.aspect }}</a>
+                        </td>
+                        <td>{{ aspect.diff|dms }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+function go_to_date(){
+date = $('#datepicker').val();
+time = $('#timepicker').val();
+window.location.href ='/chart/date/'+date+'/'+time+'/';
+
+}
+    $('#datepicker').datepicker({
+        format: "yyyy-mm-dd",
+        startView: 2,
+        todayBtn: "linked",
+        language: "pt-BR",
+        autoclose: true,
+        todayHighlight: true,
+        defaultViewDate: { year: 1986, month: 12, day: 22 }
+    });
+
+
+</script>
+{% endblock %}

@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.text import slugify
 # Create your models here.
 from django.core.urlresolvers import reverse
+from django.templatetags.static import static
 from .utils import calc_position
 from datetime import datetime, timedelta
 
@@ -13,7 +14,7 @@ class Interpretable(models.Model):
     def url(self):
         return self.get_absolute_url()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.iname
 
 
@@ -34,11 +35,14 @@ class Sign(Interpretable):
     def end_angle(self):
         return (self.index+1)*30
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     def __cmp__(self, other):
         return cmp(self.index, other.index)
+
+    def __lt__(self, other):
+        return self.index < other.index
 
     def save(self, *args, **kwargs):
         self.iname = self.name
@@ -51,15 +55,24 @@ class Planet(Interpretable):
     name = models.CharField(max_length=20, unique=True)
     code = models.CharField(max_length=20, unique=True)
     slug = models.SlugField()
+    revolution = models.FloatField()
 
     def get_absolute_url(self):
         return reverse('planet-view', args=[str(self.slug)])
 
-    def __unicode__(self):
+
+    def img(self):
+        return static('clevenus/planets/%02d-%s.svg' % (self.index+1, self.code))
+
+
+    def __str__(self):
         return self.name
 
     def __cmp__(self, other):
         return cmp(self.index, other.index)
+
+    def __lt__(self, other):
+        return self.index < other.index
 
     def save(self, *args, **kwargs):
         self.iname = self.name
@@ -91,11 +104,14 @@ class House(Interpretable):
         return reverse('house-view', args=[str(self.slug)])
 
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     def __cmp__(self, other):
         return cmp(self.index, other.index)
+
+    def __lt__(self, other):
+        return self.index < other.index
 
     def save(self, *args, **kwargs):
         self.iname = self.name
@@ -115,7 +131,7 @@ class PlanetInSign(Interpretable):
     def get_absolute_url(self):
         return reverse('planet-in-sign', args=[self.planet_slug, self.sign_slug])
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     def save(self, *args, **kwargs):
@@ -138,7 +154,7 @@ class HouseInSign(Interpretable):
     def get_absolute_url(self):
         return reverse('house-in-sign', args=[self.house_slug, self.sign_slug])
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     def save(self, *args, **kwargs):
@@ -163,7 +179,7 @@ class PlanetInHouse(Interpretable):
     def get_absolute_url(self):
         return reverse('planet-in-house', args=[self.planet_slug, self.house_slug])
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     def save(self, *args, **kwargs):
@@ -198,7 +214,7 @@ class Aspect(Interpretable):
     def get_absolute_url(self):
         return reverse('aspect', args=[self.p1_slug, self.type, self.p2_slug])
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     @property

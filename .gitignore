@@ -1,6 +1,7 @@
 clevenus/media/*
 clevenus/data/*
 clevenus/*.sqlite*
+clevenus/db.sqlite
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

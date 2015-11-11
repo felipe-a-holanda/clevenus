@@ -2,20 +2,21 @@ import operator
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 from .models import *
-from charts.views import chartNow
+from charts.views import chartNow, soon
 import itertools
 from datetime import datetime
 from datetime import timedelta
 
 def home(request):
-    return chartNow(request)
+    return soon(request)
+    #return chartNow(request)
 
 def search_view(request):
     terms = request.GET['search'].split()
     q_list = [Q(iname__icontains=term) for term in terms]
     query = reduce(operator.and_, q_list[1:], q_list[0])
 
-    objs = itertools.chain(*[Model.objects.filter(query) for Model in Sign, Planet, House, PlanetInSign, PlanetInHouse, HouseInSign, Aspect])
+    objs = itertools.chain(*[Model.objects.filter(query) for Model in (Sign, Planet, House, PlanetInSign, PlanetInHouse, HouseInSign, Aspect)])
     return render(request, 'astro/search.html', {'terms':terms, 'objs':objs})
 
 
@@ -106,13 +107,25 @@ def planet_in_house(request, planet, house):
     params['charts'] = sorted(planet_in_house.charts.all().select_related('user__user'))
     return render(request, 'astro/planet_in_house.html', params)
 
-
+from api.utils import ASPECTS
 def aspect(request, planet1, aspect_type, planet2):
-    aspect = get_object_or_404(Aspect, p1__slug=planet1, type=aspect_type, p2__slug=planet2)
+    Q1 = Q(p1__slug=planet1, type=aspect_type, p2__slug=planet2)
+    Q2 = Q(p2__slug=planet1, type=aspect_type, p1__slug=planet2)
+    aspects = Aspect.objects.filter(Q1 | Q2)
+    if aspects:
+        aspect = aspects.first()
 
+    p1 = aspect.p1
+    p2 = aspect.p2
     params = dict()
     params['aspect'] = aspect
     params['charts'] = sorted(aspect.charts.filter(chartaspect__diff__lt=aspect.orb).select_related('user__user'))
+    params['orb'] = 1
+    params['aspects'] = ASPECTS
+    params['today'] = datetime.now().strftime('%Y-%m-%d')
+    params['p1'] = p1
+    params['p2'] = p2
+    params['data_url'] = reverse('api-aspect', args=(p1.code, p2.code))
 
     #sorted(aspect.charts.all().select_related('user__user'))
     return render(request, 'astro/aspect.html', params)

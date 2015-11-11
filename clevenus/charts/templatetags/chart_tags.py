@@ -1,6 +1,7 @@
 #coding: utf-8
 from django import template
 from django.templatetags.static import static
+from arrow import Arrow
 register = template.Library()
 
 
@@ -11,6 +12,19 @@ def dms(value):
     deg, mnt = divmod(mnt, 60)
     deg, mnt, sec = int(deg), int(mnt), int(sec)
     return u"%s° %s' %s\"" % (deg, mnt, sec)
+
+@register.filter
+def mod30(value):
+    return value % 30
+
+@register.filter
+def timedelta(datetime, delta):
+    value, unit = delta.split()
+    value = int(value)
+    arrow = Arrow.fromdatetime(datetime)
+    k = {unit:value}
+    return arrow.replace(**k)
+
 
 SIGN_SVG = ['01-aries.svg',
  '02-taurus.svg',

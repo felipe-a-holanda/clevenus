@@ -60,10 +60,10 @@ class Command(BaseCommand):
                 u = self.create_user(r)
             except Exception as e:
 
-                print 'error', r['name'], e
+                print('error', r['name'], e)
                 print(traceback.format_exc())
             else:
-                print u
+                print(u)
 
 
     @transaction.atomic()

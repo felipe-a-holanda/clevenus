@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+    @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700);
+    @import url(http://square.github.io/cubism/style.css);
+</style>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="http://square.github.io/cubism/cubism.v1.js"></script>
+<div id="body"> <div id="graph" /></div>
+ 
+<script>
+// create context and horizon
+var context = cubism.context().size(960)
+var horizon = context.horizon().extent([0,2])
+ 
+// define metric accessor
+function random_ma(name) {
+   return context.metric(function(start,stop,step,callback){
+        var values = [];
+        while (+start < +stop){ start = +start +step; values.push(Math.random());}
+       callback(null, values);
+   }, name);
+}
+ 
+// draw graph
+var metrics = ["foo","bar","baz"];
+horizon.metric(random_ma);
+ 
+d3.select("#graph").selectAll(".horizon")
+      .data(metrics)
+      .enter()
+      .append("div")
+      .attr("class", "horizon")
+      .call(horizon);
+ 
+// set rule
+d3.select("#body").append("div")
+  .attr("class", "rule")
+  .call(context.rule());
+ 
+// set focus
+context.on("focus", function(i) {
+    d3.selectAll(".value")
+        .style( "right", i == null ? null : context.size() - i + "px");
+});
+// set axis 
+var axis = context.axis()
+d3.select("#graph").append("div").attr("class", "axis").append("g").call(axis);
+</script>

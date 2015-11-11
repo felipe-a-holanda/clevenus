@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.db import models, migrations
+from django.db import migrations, models
 import timezone_field.fields
 
 
@@ -15,14 +15,14 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Chart',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('id', models.AutoField(serialize=False, primary_key=True, verbose_name='ID', auto_created=True)),
                 ('name', models.CharField(max_length=256)),
                 ('date', models.DateField()),
-                ('time', models.TimeField(null=True, blank=True)),
+                ('time', models.TimeField(blank=True, null=True)),
                 ('datetime', models.DateTimeField()),
-                ('city_name', models.CharField(max_length=512, null=True, blank=True)),
-                ('lat', models.FloatField(null=True, blank=True)),
-                ('lng', models.FloatField(null=True, blank=True)),
+                ('city_name', models.CharField(blank=True, max_length=512, null=True)),
+                ('lat', models.FloatField(blank=True, null=True)),
+                ('lng', models.FloatField(blank=True, null=True)),
                 ('sun', models.FloatField(verbose_name='Sun')),
                 ('moon', models.FloatField(verbose_name='Moon')),
                 ('mercury', models.FloatField(verbose_name='Mercury')),
@@ -46,18 +46,18 @@ class Migration(migrations.Migration):
                 ('vesta', models.FloatField()),
                 ('intp_apog', models.FloatField()),
                 ('intp_perg', models.FloatField()),
-                ('house_1', models.FloatField(null=True, blank=True)),
-                ('house_2', models.FloatField(null=True, blank=True)),
-                ('house_3', models.FloatField(null=True, blank=True)),
-                ('house_4', models.FloatField(null=True, blank=True)),
-                ('house_5', models.FloatField(null=True, blank=True)),
-                ('house_6', models.FloatField(null=True, blank=True)),
-                ('house_7', models.FloatField(null=True, blank=True)),
-                ('house_8', models.FloatField(null=True, blank=True)),
-                ('house_9', models.FloatField(null=True, blank=True)),
-                ('house_10', models.FloatField(null=True, blank=True)),
-                ('house_11', models.FloatField(null=True, blank=True)),
-                ('house_12', models.FloatField(null=True, blank=True)),
+                ('house_1', models.FloatField(blank=True, null=True)),
+                ('house_2', models.FloatField(blank=True, null=True)),
+                ('house_3', models.FloatField(blank=True, null=True)),
+                ('house_4', models.FloatField(blank=True, null=True)),
+                ('house_5', models.FloatField(blank=True, null=True)),
+                ('house_6', models.FloatField(blank=True, null=True)),
+                ('house_7', models.FloatField(blank=True, null=True)),
+                ('house_8', models.FloatField(blank=True, null=True)),
+                ('house_9', models.FloatField(blank=True, null=True)),
+                ('house_10', models.FloatField(blank=True, null=True)),
+                ('house_11', models.FloatField(blank=True, null=True)),
+                ('house_12', models.FloatField(blank=True, null=True)),
                 ('created', models.DateTimeField(auto_now_add=True)),
                 ('modified', models.DateTimeField(auto_now=True)),
             ],
@@ -65,7 +65,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='ChartAspect',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('id', models.AutoField(serialize=False, primary_key=True, verbose_name='ID', auto_created=True)),
                 ('name', models.CharField(max_length=256)),
                 ('angle', models.FloatField()),
                 ('exact', models.FloatField()),
@@ -77,25 +77,36 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='City',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('id', models.AutoField(serialize=False, primary_key=True, verbose_name='ID', auto_created=True)),
                 ('name', models.CharField(max_length=512)),
                 ('city', models.CharField(max_length=512)),
                 ('state', models.CharField(max_length=512)),
                 ('country', models.CharField(max_length=512)),
                 ('lat', models.FloatField()),
                 ('lng', models.FloatField()),
-                ('timezone', timezone_field.fields.TimeZoneField()),
+                ('timezone', timezone_field.fields.TimeZoneField(null=True)),
+            ],
+        ),
+        migrations.CreateModel(
+            name='Event',
+            fields=[
+                ('id', models.AutoField(serialize=False, primary_key=True, verbose_name='ID', auto_created=True)),
+                ('name', models.CharField(max_length=512)),
+                ('datetime', models.DateTimeField()),
+                ('known_time', models.BooleanField()),
+                ('chart', models.ForeignKey(to='charts.Chart', null=True)),
+                ('city', models.ForeignKey(to='charts.City')),
             ],
         ),
         migrations.AddField(
             model_name='chart',
             name='aspects',
-            field=models.ManyToManyField(related_name='charts', through='charts.ChartAspect', to='astro.Aspect'),
+            field=models.ManyToManyField(through='charts.ChartAspect', related_name='charts', to='astro.Aspect'),
         ),
         migrations.AddField(
             model_name='chart',
             name='city',
-            field=models.ForeignKey(blank=True, to='charts.City', null=True),
+            field=models.ForeignKey(blank=True, null=True, to='charts.City'),
         ),
         migrations.AddField(
             model_name='chart',

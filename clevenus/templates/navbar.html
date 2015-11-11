@@ -24,12 +24,14 @@
 
         <ul class="nav navbar-nav navbar-right">
             {% if user.username %}
+                <li><img class="img-circle" src="{{ user.profile.profile_image_url }}"></li>
                 <li><a data-toggle="modal" href="#" data-target="#">{{ user.username }}</a></li>
+
             {% else %}
-                <li><a data-toggle="modal" href="{% url 'login' %}" data-target="{% url 'login' %}">Login</a></li>
+                <li><a data-toggle="modal" href="#" data-target="#">Login</a></li>
             {% endif %}
 
-            <li><a data-toggle="modal" href="{% url 'logout' %}" data-target="{% url 'logout' %}">Logout</a></li>
+            <li><a data-toggle="modal" href="#" data-target="#">Logout</a></li>
         </ul>
     </div>
 </div>

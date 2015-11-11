@@ -8,18 +8,43 @@ from fabric.api import *
 
 
 env.user = 'root'
+env.run_user = 'django'
 env.http_user = 'www-data'
 env.http_group = 'www-data'
-env.hosts = ['104.236.42.196']
+env.hosts = ['clevenus.com']
 env.www_path = '/var/www'
-env.path = join(env.www_path, 'astrology')
+#env.path = join(env.www_path, 'astrology')
 env.app_path = join(env.path, 'astro')
 env.server_conf = 'astro/config/apache2/astro.conf'
 
 env.venv_name = 'venv'
 env.venv_path = join(env.www_path, env.venv_name)
-env.github_repo = 'git@github.com:flp9001/astrology.git'
+env.github_repo = 'https://github.com/flp9001/clevenus.git'
 env.activate = 'source {venv_path}/bin/activate'.format(**env)
+
+
+
+def su(user, command):
+    with settings(sudo_prefix="su %s -c " % user,
+                  sudo_prompt="Password:"):
+        sudo(command)
+
+
+@task
+def initial_deploy():
+    #run('apt-get install -y git')
+    #run('whoami')
+    #sudo('whoami', user='django')
+    with su('django', 'cd'):
+        run('whoami')
+    #with cd('su {run_user}'.format(**env)):
+    #    run('cd && git clone {github_repo}'.format(**env))
+    #sudo('cd && git checkout master', user=env.run_user)
+
+
+@task
+def rm_mig():
+    local("find . -path \*mig*/0*.py -exec rm -rf {} \;")
 
 
 @contextmanager

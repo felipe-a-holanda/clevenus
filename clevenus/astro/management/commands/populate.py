@@ -18,29 +18,29 @@ SIGNS = ['Aries',
 
 PLANETS = [
            #'Ecl_Nut',
-           'Sun',
-           'Moon',
-           'Mercury',
-           'Venus',
-           'Mars',
-           'Jupiter',
-           'Saturn',
-           'Uranus',
-           'Neptune',
-           'Pluto',
-           'Mean_Node',
-           'True_Node',
-           'Mean_Apog',
-           'Oscu_Apog',
-           'Earth',
-           'Chiron',
-           'Pholus',
-           'Ceres',
-           'Pallas',
-           'Juno',
-           'Vesta',
-           'Intp_Apog',
-           'Intp_Perg'
+           ['Sun',365.256],
+           ['Moon',29.53],
+           ['Mercury',87.969],
+           ['Venus',224.701],
+           ['Mars',686.98],
+           ['Jupiter',11.862*365.256],
+           ['Saturn',29.457*365.256],
+           ['Uranus',84.011*365.256],
+           ['Neptune',164.79*365.256],
+           ['Pluto',247.68*365.256],
+           ['Mean_Node',0],
+           ['True_Node',0],
+           ['Mean_Apog',0],
+           ['Oscu_Apog',0],
+           ['Earth',0],
+           ['Chiron',0],
+           ['Pholus',0],
+           ['Ceres',4.599*365.2560],
+           ['Pallas',0],
+           ['Juno',0],
+           ['Vesta',0],
+           ['Intp_Apog',0],
+           ['Intp_Perg',0],
            ]
 
 HOUSES = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII']
@@ -69,21 +69,22 @@ class Command(BaseCommand):
         for i, name in enumerate(SIGNS):
             o, _ = Sign.objects.get_or_create(name=name, code=name.lower(), index=i)
             o.save()
-            print ' ', o
+            print(' ', o)
 
     def create_planets(self):
         print('create_planets')
-        for i, name in enumerate(PLANETS):
-            o, _ = Planet.objects.get_or_create(name=name, code=name.lower(), index=i)
+        for i, p in enumerate(PLANETS):
+            name, rev = p
+            o, _ = Planet.objects.get_or_create(name=name, code=name.lower(), index=i, revolution=rev)
             o.save()
-            print ' ', o
+            print(' ', o)
 
     def create_houses(self):
         print('create_houses')
         for i, name in enumerate(HOUSES):
             o, _ = House.objects.get_or_create(name=name, code='house_%d' %(i+1), index=i)
             o.save()
-            print ' ', o
+            print(' ', o)
 
     def create_planets_in_signs(self):
         print('create_planets_in_signs')
@@ -94,7 +95,7 @@ class Command(BaseCommand):
             for s in signs:
                 o, _ = PlanetInSign.objects.get_or_create(planet=p, sign=s)
                 o.save()
-                print ' ', o
+                print(' ', o)
 
     def create_planets_in_houses(self):
         print('create_planets_in_houses')
@@ -105,7 +106,7 @@ class Command(BaseCommand):
             for h in houses:
                 o, _ = PlanetInHouse.objects.get_or_create(planet=p, house=h)
                 o.save()
-                print ' ', o
+                print(' ', o)
 
     def create_houses_in_signs(self):
         print('create_houses_in_signs')
@@ -116,7 +117,7 @@ class Command(BaseCommand):
             for s in signs:
                 o, _ = HouseInSign.objects.get_or_create(house=h, sign=s)
                 o.save()
-                print ' ', o
+                print(' ', o)
 
     def create_aspects(self):
         print('create_aspects')
@@ -127,7 +128,7 @@ class Command(BaseCommand):
                     for type in ASPECT_TYPES:
                         o, _ = Aspect.objects.get_or_create(p1=p1, p2=p2, type=type[0], orb=orb(p1, p2, type[2]))
                         o.save()
-                        print ' ', o
+                        print(' ', o)
 
 
 
