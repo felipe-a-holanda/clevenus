@@ -1,11 +1,10 @@
 build-essential
 gettext
-python-dev
-python-pip
-python-virtualenv
-apache2
-libapache2-mod-wsgi
+python3-dev
+python3-pip
+python3-virtualenv
 swe-basic-data
 swe-standard-data
 libffi-dev
 libssl-dev
+libjpeg-dev
