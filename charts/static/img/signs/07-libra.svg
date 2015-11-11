@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" xml:space="preserve" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="0 0 100 100"><defs><style type="text/css">
+    .fil0 {fill:#000000}
+   </style></defs><g transform="matrix(0.0463392,0,0,0.04626554,-126.04262,-199.13993)"><path fill="#000" d="m2720,6288,0-200,2158,0,0,200-2158,0zm853-789,0,187-853,0,0-201,598,0c-109-111-163-236-163-374,0-172,64-319,191-443s278-186,454-186c175,0,326,62,453,186,128,124,191,271,191,443,0,138-54,263-163,374h597v201h-853v-187c145-94,218-220,218-378,0-120-44-222-131-308-88-87-192-130-312-130-122,0-226,43-313,130-87,86-131,188-131,308,0,158,72,284,217,378z"/></g></svg>

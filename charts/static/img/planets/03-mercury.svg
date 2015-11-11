@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" version="1.0" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="0 0 100 100">
+	<g transform="translate(-348.7552,-428.0905)">
+		<g stroke-linejoin="miter" transform="matrix(2.1942846,0,0,2.1942846,-421.54957,-627.18426)" stroke="#000" stroke-linecap="butt" stroke-dasharray="none" stroke-miterlimit="4" fill="none">
+			<path style="color:#000000;" d="M112,36.5c0,6.351-5.15,11.5-11.5,11.5-6.351,0-11.5-5.149-11.5-11.5s5.149-11.5,11.5-11.5c6.3513,0,11.5,5.1487,11.5,11.5z" transform="matrix(0.96,0,0,0.96,277.357,466.9525)" stroke-dashoffset="0" stroke-width="3.125"/>
+			<path style="color:#000000;" d="M111.95,37.604c-0.61,6.322-6.23,10.953-12.554,10.343-5.483-0.529-9.821-4.871-10.344-10.354" transform="matrix(0.810715,0,0,0.810715,292.4483,451.9429)" stroke-dashoffset="0" stroke-width="3.70043731"/>
+			<path d="m373.84,512.99,0,12" stroke-width="3"/>
+			<path d="m368.84,519.99,10,0" stroke-width="3"/>
+		</g>
+	</g>
+</svg>
