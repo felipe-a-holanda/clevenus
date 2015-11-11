@@ -8,8 +8,8 @@ from datetime import datetime
 from datetime import timedelta
 
 def home(request):
-    return soon(request)
-    #return chartNow(request)
+    #return soon(request)
+    return chartNow(request)
 
 def search_view(request):
     terms = request.GET['search'].split()

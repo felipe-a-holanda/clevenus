@@ -34,8 +34,9 @@ def boundaries_generator(predicate, iterable):
             break
         
         
-from itertools import zip_longest
+
 def boundaries(predicate, iterable, fillvalue=None):
+    from itertools import zip_longest
     gen = list(boundaries_generator(predicate, iterable))
     even = gen[::2]
     odd = gen[1::2]
